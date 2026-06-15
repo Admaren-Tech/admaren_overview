@@ -101,6 +101,7 @@ html, body {
 .sec-label { display: flex; align-items: stretch; gap: 0.875rem; }
 .sec-label.span3 { grid-column: span 3; }
 .sec-label.span2 { grid-column: span 2; }
+.sec-label.span-sep { grid-column: span 1; }
 .sec-label-accent { width: 0.2rem; border-radius: 0.2rem; background: linear-gradient(180deg, var(--navy), rgba(15,29,56,0.2)); flex-shrink: 0; }
 .sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
 .sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
@@ -108,11 +109,20 @@ html, body {
 .sec-label.ecosystem .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
 
 /* ── GRID ── */
-.grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; height: 28rem; }
+.grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; height: 28rem; position: relative; }
+/* vertical separator between eco (cols 1-3) and svc (cols 4-5) */
+/* midpoint of gap 3→4: left = 3*(100% - 4gap)/5 + 3.5gap = 60% + 1.1rem */
+.grid5::before {
+  content: ''; position: absolute; top: 8%; bottom: 8%;
+  left: calc(60% + 1.1rem); width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(15,29,56,0.22) 25%, rgba(15,29,56,0.22) 75%, transparent);
+  pointer-events: none;
+}
 
 /* ── CARD ── */
 .card {
-  background: var(--card); border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
+  background: #ffffff; border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
+  border-top: 2px solid rgba(1,75,118,0.35);
   padding: 1.75rem 2rem;
   display: grid; grid-template-rows: 30% 1px 20% 1px 50%;
   min-height: 0; position: relative; overflow: hidden;
@@ -127,7 +137,19 @@ html, body {
   transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
 }
 .card.svc::after { background: linear-gradient(90deg, var(--navy), rgba(15,29,56,0.3)); }
-.card.svc { padding-left: 1.25rem; padding-right: 1.25rem; border-color: rgba(15,29,56,0.12); }
+.card.svc {
+  padding-left: 1.25rem; padding-right: 1.25rem;
+  background: #ffffff;
+  border-color: rgba(15,29,56,0.15);
+  border-top: 2px solid rgba(15,29,56,0.4);
+}
+/* separator drawn on the grid container between col 3 and 4 */
+.grid5 { isolation: isolate; }
+.grid5::before {
+  content: ''; position: absolute; top: 10%; bottom: 10%;
+  width: 1px; background: linear-gradient(180deg, transparent, rgba(15,29,56,0.2) 30%, rgba(15,29,56,0.2) 70%, transparent);
+  left: calc(60% + 0.5rem); /* midpoint of gap between col3 and col4 in a 5-col equal grid */
+}
 .card:hover {
   box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.14), 0 1.5rem 4rem rgba(15,29,56,0.08);
   transform: translateY(-0.2rem);
