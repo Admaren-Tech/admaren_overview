@@ -123,8 +123,8 @@ html, body {
 /* ── CARD ── */
 .card {
   background: #ffffff; border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
-  padding: 1.25rem;
-  display: flex; flex-direction: column;
+  padding: 1.5rem 1.25rem 1.25rem;
+  display: grid; grid-template-rows: 1fr 1fr 3fr auto;
   min-height: 0; position: relative; overflow: hidden;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -136,48 +136,46 @@ html, body {
 
 /* ── LOGO ── */
 .card-logo-wrap {
-  display: flex; align-items: center; justify-content: center;
-  padding: 0.4rem 0 0.6rem;
+  height: 4rem; display: flex; align-items: center; justify-content: center;
+  padding-bottom: 0.5rem;
   border-bottom: 2px solid;
   border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
-  flex-shrink: 0;
 }
 .card-logo { display: block; height: 2.25rem; width: auto; max-width: 100%; object-fit: contain; }
 
 /* ── CARD NAME ── */
 .card-name {
   height: 4rem;
-  font-size: 1.05rem; font-weight: 800; letter-spacing: 0.1rem;
-  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.25;
+  font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12rem;
+  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.2;
   display: flex; align-items: center; justify-content: center;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid;
   border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
-  flex-shrink: 0;
 }
 
 /* ── DESC ── */
 .card-desc {
-  font-size: 0.68rem; font-style: italic; font-weight: 500;
+  font-size: 0.7rem; font-style: italic; font-weight: 500;
   color: var(--muted); line-height: 1.45; text-align: center;
-  padding: 0.5rem 0.25rem 0.25rem; flex-shrink: 0;
+  align-self: center; padding: 0 0.25rem;
 }
 
 /* ── BULLET LIST ── */
 .card-list {
-  list-style: disc; padding-left: 1.1rem;
-  display: flex; flex-direction: column; gap: 0.25rem;
-  flex: 1; padding-top: 0.25rem;
+  list-style: disc; padding-left: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  align-self: start; padding-top: 0.5rem; min-height: 0;
 }
 .card-list li {
-  font-size: 0.68rem; font-weight: 600; color: var(--navy); line-height: 1.4;
+  font-size: 0.7rem; font-weight: 600; color: var(--navy); line-height: 1.4;
 }
 
 /* ── CARD LINK ── */
 .card-link {
-  display: block; text-align: center; margin-top: auto; padding-top: 0.5rem;
+  display: block; text-align: center; align-self: end;
   font-size: 0.65rem; font-weight: 600; color: var(--blue);
-  text-decoration: underline; flex-shrink: 0;
+  text-decoration: underline;
 }
 </style>
 </head>
@@ -222,7 +220,7 @@ html, body {
 
       <!-- Eco cards -->
       <div class="card">
-        <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
+        <div class="card-name">COEMS</div>
         <div class="card-desc">Commercial management platform for breakbulk industry</div>
         <ul class="card-list">
           <li>Chartering Desk</li>
@@ -234,7 +232,7 @@ html, body {
       </div>
 
       <div class="card">
-        <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:3rem"></div>
+        <div class="card-name">Cargo Centrum</div>
         <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
         <ul class="card-list">
           <li>Cargo Parse AI</li>
@@ -247,7 +245,7 @@ html, body {
       </div>
 
       <div class="card">
-        <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
+        <div class="card-name">SecureLoad</div>
         <div class="card-desc">Cargo planning, verification and execution solutions</div>
         <ul class="card-list">
           <li>Stowage Planner</li>
