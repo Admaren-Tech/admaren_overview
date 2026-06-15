@@ -60,17 +60,17 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 2.2rem;
+  padding: 1.25rem 3.5rem;
   border-bottom: 1px solid var(--line);
 }
 
-.top img { height: 2.2rem; }
+.top img { height: 2.75rem; }
 .top-right { display: flex; align-items: center; gap: 1.4rem; }
 
 .top-founded {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.125rem;
+  letter-spacing: 0.156rem;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -78,7 +78,7 @@ html, body {
 
 /* ── HERO ── */
 .hero {
-  padding: 1.4rem 2.2rem 1.6rem;
+  padding: 1.5rem 3.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -86,21 +86,21 @@ html, body {
 }
 
 .hero-label {
-  font-size: 0.65rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.1875rem;
   white-space: nowrap;
   line-height: 1;
   text-transform: uppercase;
   color: var(--blue);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-title {
-  font-size: 1.4rem;
+  font-size: 1.75rem;
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.025rem;
+  letter-spacing: -0.03125rem;
   color: var(--navy);
 }
 .hero-title span { color: var(--blue); }
@@ -110,31 +110,31 @@ html, body {
   gap: 0;
   flex-shrink: 0;
   background: var(--bg);
-  border-radius: 0.6rem;
-  padding: 0.8rem 0.4rem;
+  border-radius: 0.75rem;
+  padding: 1rem 0.5rem;
 }
 
 .stat {
-  padding: 0 1.4rem;
+  padding: 0 1.5rem;
   border-left: 1px solid var(--line);
   text-align: center;
 }
 .stat:first-child { border-left: none; }
 
 .stat-num {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   font-weight: 800;
   color: var(--navy);
-  letter-spacing: -0.05rem;
-  line-height: 1;
-  margin-bottom: 0.3rem;
+  letter-spacing: -0.03125rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
 }
 .stat-num em { color: var(--blue); font-style: normal; }
 
 .stat-lbl {
-  font-size: 0.45rem;
+  font-size: 0.5rem;
   font-weight: 700;
-  letter-spacing: 0.075rem;
+  letter-spacing: 0.09375rem;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -145,8 +145,8 @@ html, body {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 1rem 2.2rem 1.2rem;
-  gap: 1.2rem;
+  padding: 1.5rem 3.5rem 2rem;
+  gap: 2rem;
 }
 
 /* ── SECTION ── */
@@ -155,33 +155,33 @@ html, body {
 .sec-label {
   display: flex;
   align-items: stretch;
-  gap: 0.7rem;
-  margin-bottom: 0.6rem;
+  gap: 0.875rem;
+  margin-bottom: 0.75rem;
   flex-shrink: 0;
 }
 
 .sec-label-accent {
-  width: 0.2rem;
-  border-radius: 0.2rem;
+  width: 0.25rem;
+  border-radius: 0.25rem;
   background: var(--navy);
   flex-shrink: 0;
 }
 
-.sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.15rem; }
+.sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
 
 .sec-label-title {
-  font-size: 1.1rem;
+  font-size: 1.375rem;
   font-weight: 800;
-  letter-spacing: 0.025rem;
+  letter-spacing: 0.03125rem;
   text-transform: uppercase;
   color: var(--navy);
   line-height: 1;
 }
 
 .sec-label-sub {
-  font-size: 0.5rem;
+  font-size: 0.625rem;
   font-weight: 600;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -189,20 +189,19 @@ html, body {
 .section.ecosystem .sec-label-accent { background: var(--blue); }
 
 /* ── GRIDS ── */
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; height: 17rem; }
-.grid2 { display: flex; justify-content: center; gap: 0.5rem; height: 17rem; }
-.grid2 .card { width: calc((100% - 2 * 0.5rem) / 3); flex-shrink: 0; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; flex: 1; min-height: 0; }
+.grid2 { display: flex; justify-content: center; gap: 1rem; flex: 1; min-height: 0; }
+.grid2 .card { width: calc((100% - 2 * 1rem) / 3); flex-shrink: 0; }
 
 /* ── CARD ── */
 .card {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.8rem;
+  border-radius: 0.625rem;
+  padding: 1.5rem 1.75rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
   min-height: 0;
   transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
@@ -227,19 +226,21 @@ html, body {
 .card.active { background: var(--hover); border-color: rgba(33,118,200,0.3); }
 
 .card-name {
-  font-size: 1.4rem;
+  font-size: 1.375rem;
   font-weight: 800;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: var(--navy);
-  line-height: 1.1;
+  line-height: 1.15;
   flex-shrink: 0;
+  padding: 0.625rem 0 0.875rem;
 }
 .card-name span { color: var(--blue); }
 
-.card-rule { height: 1px; background: var(--line); margin-bottom: 0.45rem; flex-shrink: 0; }
-.card-logo-wrap { height: 8rem; flex-shrink: 0; width: 100%; display: flex; align-items: center; justify-content: center; padding: 0 2rem; box-sizing: border-box; }
-.card-logo { display: block; height: 2rem; width: auto; max-width: calc(100% - 4rem); object-fit: contain; margin: auto; }
+.card-rule { height: 1px; background: var(--line); margin-bottom: 0.625rem; flex-shrink: 0; }
+.card-logo-wrap { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; padding: 0 2rem; box-sizing: border-box; }
+.card-logo { display: block; height: 2.375rem; width: auto; max-width: calc(100% - 4rem); object-fit: contain; margin: auto; }
+img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 
 .card-bottom { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding-bottom: 0.5rem; }
 .card-desc {
