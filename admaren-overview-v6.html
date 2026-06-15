@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Admaren</title>
+<title>Admaren v6</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; src: url('fonts/Montserrat-Regular.ttf') format('truetype'); }
@@ -36,9 +36,7 @@ html, body {
 
 .page {
   width: 1920px; height: 1200px;
-  background-color: #ffffff;
-  background-image: radial-gradient(rgba(1,75,118,0.1) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: #ffffff;
   display: grid; grid-template-rows: auto 1fr 4fr;
   flex-shrink: 0;
   transform-origin: top left; position: absolute; top: 0; left: 0;
@@ -55,15 +53,22 @@ html, body {
 }
 .top img { height: 2.75rem; }
 .top-right { display: flex; align-items: center; gap: 1.4rem; }
-.top-founded { font-size: 1rem; font-weight: 700; letter-spacing: 0.156rem; text-transform: uppercase; color: var(--muted); }
-.top-founded span { color: var(--navy); font-weight: 800; }
 
 /* ── HERO ── */
 .hero {
   padding: 0 3.5rem;
   display: flex; align-items: center; justify-content: space-between; gap: 2rem;
   background: var(--card);
+  /* 2: gradient separator lines */
+  border-top: none; border-bottom: none;
+  position: relative;
 }
+.hero::before, .hero::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,29,56,0.15) 20%, rgba(15,29,56,0.15) 80%, transparent);
+}
+.hero::before { top: 0; }
+.hero::after  { bottom: 0; }
 
 .hero-label {
   font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1875rem;
@@ -74,24 +79,35 @@ html, body {
   font-size: 1.75rem; font-weight: 800; line-height: 1.1;
   letter-spacing: -0.03125rem; color: var(--navy);
 }
-.hero-title span { color: var(--blue); }
+/* 1: gradient text on "Visual Solutions" */
+.hero-title span {
+  background: linear-gradient(135deg, var(--blue) 0%, #2980b9 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
 
 .stats {
   display: flex; gap: 0; flex-shrink: 0;
-  background: #f0f4f9;
+  background: linear-gradient(135deg, #ffffff 0%, #eef4fb 100%);
   border-radius: 0.75rem; padding: 1rem 0.5rem;
   box-shadow: 0 0.1rem 0.4rem rgba(15,29,56,0.06), 0 0.3rem 1rem rgba(15,29,56,0.05);
 }
 .stat { padding: 0 1.5rem; text-align: center; border-left: 1px solid var(--line); }
 .stat:first-child { border-left: none; }
-.stat-num { font-size: 1.375rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03125rem; line-height: 1.2; margin-bottom: 0.25rem; }
-.stat-num em { color: var(--blue); font-style: normal; }
+/* 4: gradient stat numbers */
+.stat-num {
+  font-size: 1.375rem; font-weight: 800; letter-spacing: -0.03125rem; line-height: 1.2; margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-num em { font-style: normal; }
 .stat-lbl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.09375rem; text-transform: uppercase; color: var(--muted); }
 
 /* ── CARDS AREA ── */
+/* 3: subtle tint on cards section */
 .cards-area {
   min-height: 0; display: flex; flex-direction: column; justify-content: center;
   padding: 1.5rem 3.5rem; gap: 1rem;
+  background: #ffffff;
 }
 
 /* ── SECTION HEADERS ROW ── */
@@ -110,9 +126,21 @@ html, body {
 /* ── GRID ── */
 .grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; height: 28rem; }
 
+/* 5: staggered entrance animation */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.grid5 .card { animation: cardIn 0.5s ease both; }
+.grid5 .card:nth-child(1) { animation-delay: 0.05s; }
+.grid5 .card:nth-child(2) { animation-delay: 0.15s; }
+.grid5 .card:nth-child(3) { animation-delay: 0.25s; }
+.grid5 .card:nth-child(4) { animation-delay: 0.35s; }
+.grid5 .card:nth-child(5) { animation-delay: 0.45s; }
+
 /* ── CARD ── */
 .card {
-  background: var(--card); border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
+  background: linear-gradient(160deg, #ffffff 0%, #f0f6fc 100%); border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
   padding: 1.75rem 2rem;
   display: grid; grid-template-rows: 30% 1px 20% 1px 50%;
   min-height: 0; position: relative; overflow: hidden;
@@ -173,6 +201,7 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 .card-list li::before { display: none; }
 .card.svc .card-list li { color: var(--navy); background: rgba(15,29,56,0.04); border-color: rgba(15,29,56,0.1); }
 .card-list li:last-child:nth-child(odd) { grid-column: 1 / -1; text-align: center; }
+
 </style>
 </head>
 <body>
@@ -204,7 +233,6 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
   <!-- CARDS -->
   <div class="cards-area">
 
-    <!-- Section labels row -->
     <div class="sections-header">
       <div class="sec-label ecosystem span3">
         <div class="sec-label-accent"></div>
@@ -222,84 +250,83 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
       </div>
     </div>
 
-    <!-- All 5 cards in one row -->
     <div class="grid5">
 
-        <div class="card">
-          <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Commercial management platform for breakbulk industry</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Chartering Desk</li>
-            <li>Operation Desk</li>
-            <li>Engineering Desk</li>
-            <li>Management Desk</li>
-          </ul>
-        </div>
+      <div class="card">
+        <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
+        <div class="card-rule"></div>
+        <div class="card-desc">Commercial management platform for breakbulk industry</div>
+        <div class="card-rule"></div>
+        <ul class="card-list">
+          <li>Chartering Desk</li>
+          <li>Operation Desk</li>
+          <li>Engineering Desk</li>
+          <li>Management Desk</li>
+        </ul>
+      </div>
 
-        <div class="card">
-          <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:4rem"></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Cargo Parse AI</li>
-            <li>MPP Finder &amp; Tracker</li>
-            <li>Sea Route Optimizer</li>
-            <li>Cargo Mailer</li>
-            <li>Hindcast Wave Statistics</li>
-          </ul>
-        </div>
+      <div class="card">
+        <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:4rem"></div>
+        <div class="card-rule"></div>
+        <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
+        <div class="card-rule"></div>
+        <ul class="card-list">
+          <li>Cargo Parse AI</li>
+          <li>MPP Finder &amp; Tracker</li>
+          <li>Sea Route Optimizer</li>
+          <li>Cargo Mailer</li>
+          <li>Hindcast Wave Statistics</li>
+        </ul>
+      </div>
 
-        <div class="card">
-          <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Cargo planning, verification and execution solutions</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Stowage Planner</li>
-            <li>Loading Computer</li>
-            <li>Acceleration &amp; Lashing</li>
-            <li>Fleet Connect</li>
-            <li>Structural Digital Twin</li>
-          </ul>
-        </div>
+      <div class="card">
+        <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
+        <div class="card-rule"></div>
+        <div class="card-desc">Cargo planning, verification and execution solutions</div>
+        <div class="card-rule"></div>
+        <ul class="card-list">
+          <li>Stowage Planner</li>
+          <li>Loading Computer</li>
+          <li>Acceleration &amp; Lashing</li>
+          <li>Fleet Connect</li>
+          <li>Structural Digital Twin</li>
+        </ul>
+      </div>
 
-        <div class="card svc studio">
-          <div class="card-name">Admaren<br><span>Studio</span></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Content Generation</li>
-            <li>3D Product Animation</li>
-            <li>Character Animation</li>
-            <li>Video Post-production</li>
-            <li>Maritime / Engg. Animation</li>
-          </ul>
-        </div>
+      <div class="card svc studio">
+        <div class="card-name">Admaren<br><span>Studio</span></div>
+        <div class="card-rule"></div>
+        <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
+        <div class="card-rule"></div>
+        <ul class="card-list">
+          <li>Content Generation</li>
+          <li>3D Product Animation</li>
+          <li>Character Animation</li>
+          <li>Video Post-production</li>
+          <li>Maritime / Engg. Animation</li>
+        </ul>
+      </div>
 
-        <div class="card svc plus">
-          <div class="card-name">Admaren<br><span>Plus</span></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Managed back-office and GCC support for global companies</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>GCC / EOR</li>
-            <li>HR Management</li>
-            <li>Finance &amp; Legal</li>
-            <li>SOC &amp; IT Support</li>
-            <li>Workspace Infra</li>
-          </ul>
-        </div>
+      <div class="card svc plus">
+        <div class="card-name">Admaren<br><span>Plus</span></div>
+        <div class="card-rule"></div>
+        <div class="card-desc">Managed back-office and GCC support for global companies</div>
+        <div class="card-rule"></div>
+        <ul class="card-list">
+          <li>GCC / EOR</li>
+          <li>HR Management</li>
+          <li>Finance &amp; Legal</li>
+          <li>SOC &amp; IT Support</li>
+          <li>Workspace Infra</li>
+        </ul>
+      </div>
 
-    </div><!-- end .grid5 -->
-
-  </div><!-- end .cards-area -->
-
+    </div>
+  </div>
 
 </div><!-- end .page -->
+
+
 <script>
   function scalePage() {
     const page = document.querySelector('.page');
@@ -312,6 +339,7 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
   }
   scalePage();
   window.addEventListener('resize', scalePage);
+
 </script>
 </body>
 </html>
