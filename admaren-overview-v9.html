@@ -36,9 +36,7 @@ html, body {
 
 .page {
   width: 1920px; height: 1200px;
-  background-color: #ffffff;
-  background-image: radial-gradient(rgba(1,75,118,0.1) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: #ffffff;
   display: grid; grid-template-rows: auto 1fr 4fr;
   flex-shrink: 0;
   transform-origin: top left; position: absolute; top: 0; left: 0;
@@ -118,7 +116,6 @@ html, body {
 /* ── CARD ── */
 .card {
   background: #ffffff; border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
-  border-top: 2px solid rgba(1,75,118,0.35);
   padding: 1.75rem 2rem;
   display: grid; grid-template-rows: 30% 1px 20% 1px 50%;
   min-height: 0; position: relative; overflow: hidden;
@@ -128,7 +125,6 @@ html, body {
   padding-left: 1.25rem; padding-right: 1.25rem;
   background: #ffffff;
   border-color: rgba(15,29,56,0.15);
-  border-top: 2px solid rgba(15,29,56,0.4);
 }
 
 /* ── LOGO ── */
@@ -145,7 +141,7 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 .card-name span { color: var(--blue); }
 
 /* ── DIVIDER ── */
-.card-rule { background: linear-gradient(90deg, transparent, var(--line), transparent); align-self: stretch; }
+.card-rule { background: var(--line); align-self: stretch; }
 
 /* ── DESC ── */
 .card-desc {
