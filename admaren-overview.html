@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Admaren</title>
+<style>
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; src: url('fonts/Montserrat-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: italic; font-weight: 400; src: url('fonts/Montserrat-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; src: url('fonts/Montserrat-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700; src: url('fonts/Montserrat-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 800; src: url('fonts/Montserrat-ExtraBold.ttf') format('truetype'); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+
+:root {
+  --navy: #0f1d38;
+  --blue: #014b76;
+  --bg:   #f0f4f9;
+  --card: #ffffff;
+  --muted: #607090;
+  --line: rgba(15,29,56,0.1);
+  --hover: #eef3fa;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--navy);
+}
+
+.page { height: 100vh; display: flex; flex-direction: column; }
+
+/* ── HEADER (topbar + hero combined) ── */
+.header {
+  background: var(--card);
+  flex-shrink: 0;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 44px;
+  border-bottom: 1px solid var(--line);
+}
+
+.top img { height: 44px; }
+
+.top-right { display: flex; align-items: center; gap: 28px; }
+
+.top-founded {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.top-founded span { color: var(--navy); font-weight: 800; }
+
+.top-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 28px 44px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--navy);
+}
+
+.hero-title span { color: var(--blue); }
+
+.stats {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 16px 8px;
+}
+
+.stat {
+  padding: 0 28px;
+  border-left: 1px solid var(--line);
+  text-align: center;
+}
+
+.stat:first-child { border-left: none; }
+
+.stat-num {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-num em { color: var(--blue); font-style: normal; }
+
+.stat-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── CARDS AREA ── */
+.cards-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 44px 24px;
+  gap: 24px;
+}
+
+/* ── SECTION ── */
+.section { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.section.ecosystem { flex: 1.1; }
+.section.services { flex: 0.9; }
+
+.sec-label {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.sec-label-accent {
+  width: 4px;
+  border-radius: 4px;
+  background: var(--navy);
+  flex-shrink: 0;
+}
+
+.sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+
+.sec-label-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.sec-label-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section.ecosystem .sec-label-accent { background: var(--blue); }
+
+/* ── GRIDS ── */
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; flex: 1; min-height: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; flex: 1; min-height: 0; }
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 16px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-height: 0;
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.card.svc::after { background: var(--navy); }
+.card.svc .card-desc { padding: 0 100px; }
+
+.card:hover { background: var(--hover); border-color: rgba(33,118,200,0.25); box-shadow: 0 6px 20px rgba(15,29,56,0.08); }
+.card:hover::after, .card.active::after { transform: scaleX(1); }
+.card.active { background: var(--hover); border-color: rgba(33,118,200,0.3); }
+
+.card-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+.card-name span { color: #014b76; }
+
+.card-rule { height: 1px; background: var(--line); margin-bottom: 9px; flex-shrink: 0; }
+.card-logo-wrap { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; padding: 0 40px; box-sizing: border-box; }
+.card-logo { display: block; height: 40px; width: auto; max-width: calc(100% - 80px); object-fit: contain; margin: auto; }
+
+.card-bottom { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-bottom: 4px; }
+.card-desc {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2d3748;
+  line-height: 1.45;
+  padding: 0 20px;
+}
+.card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+.card-chip {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--blue);
+  background: rgba(33,118,200,0.08);
+  border: 1px solid rgba(33,118,200,0.18);
+  border-radius: 20px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+.card.svc .card-chip { color: var(--navy); background: rgba(15,29,56,0.06); border-color: rgba(15,29,56,0.15); }
+
+.card-list { list-style: none; flex: 1; min-height: 0; overflow: hidden; }
+.card-list.cols2 { columns: 2; column-gap: 10px; }
+
+.card-list li {
+  font-size: 15px;
+  color: var(--navy);
+  padding: 3px 0 3px 13px;
+  position: relative;
+  line-height: 1.3;
+}
+
+.card-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.45;
+}
+
+.card.svc .card-list li::before { background: var(--navy); opacity: 0.25; }
+
+.card-tap {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.5;
+  padding-top: 8px;
+}
+
+.card:hover .card-tap { opacity: 1; color: var(--blue); }
+.card.svc:hover .card-tap { color: var(--navy); }
+
+.card-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+  color: var(--blue);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.card-link:hover { opacity: 0.7; }
+
+/* ── MODAL ── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,29,56,0.45);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  animation: fi 0.18s ease;
+}
+
+.overlay.open { display: flex; }
+@keyframes fi { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  background: #fff;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  animation: su 0.22s ease;
+  box-shadow: 0 32px 80px rgba(15,29,56,0.16);
+  position: relative;
+}
+
+@keyframes su { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.modal-x {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 32px; height: 32px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.15s, color 0.15s;
+  z-index: 2;
+}
+.modal-x:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+.modal-top {
+  padding: 36px 32px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  position: relative;
+}
+.modal-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px; right: 32px;
+  height: 3px;
+  background: var(--blue);
+  border-radius: 0 0 3px 3px;
+}
+.modal-top-accent { display: none; }
+.modal-top-text { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; padding-right: 0; }
+
+.modal-logo { display: block; width: 200px; height: 56px; object-fit: contain; }
+.modal-name {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1;
+}
+.modal-desc {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 360px;
+}
+
+.modal-body { padding: 24px 32px 28px; }
+
+.modal-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.modal-tags {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.modal-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 14px 9px 28px;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.2;
+}
+.modal-tag::before {
+  content: '';
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.6;
+}
+
+.modal-footer {
+  padding: 0 32px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--blue);
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
+  transition: background 0.18s, transform 0.15s;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+}
+.modal-btn:hover { background: var(--navy); transform: translateY(-1px); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+  <!-- TOP -->
+  <div class="top">
+    <img src="admaren 4.png" alt="Admaren">
+    <div class="top-right">
+      <div class="top-founded">Est. <span>2018</span></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-label">Maritime Technology Company</div>
+      <div class="hero-title">Building Software &amp; <span>Visual Solutions</span></div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">800<em>+</em></div>
+        <div class="stat-lbl">Projects Delivered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">25<em>+</em></div>
+        <div class="stat-lbl">Customers Served</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100<em>+</em></div>
+        <div class="stat-lbl">Team Members</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">500<em>+</em></div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- end .header -->
+
+  <!-- CARDS -->
+  <div class="cards-area">
+
+    <div class="section ecosystem">
+      <div class="sec-label">
+        <div class="sec-label-accent"></div>
+        <div class="sec-label-text">
+          <div class="sec-label-title">Admaren Ecosystem</div>
+          <div class="sec-label-sub">Software Platforms</div>
+        </div>
+      </div>
+      <div class="grid3">
+
+        <div class="card" onclick="openModal('coems')">
+          <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
+          <div class="card-bottom">
+            <div class="card-desc">Commercial management platform for breakbulk industry</div>
+            <a class="card-link" href="https://www.coems.com" target="_blank" onclick="event.stopPropagation()">www.coems.com</a>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('cargo')">
+          <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:70px"></div>
+          <div class="card-bottom">
+            <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
+            <a class="card-link" href="https://www.cargocentrum.com" target="_blank" onclick="event.stopPropagation()">www.cargocentrum.com</a>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('secureload')">
+          <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
+          <div class="card-bottom">
+            <div class="card-desc">Cargo planning, verification and execution solutions</div>
+            <a class="card-link" href="https://www.secureload.com" target="_blank" onclick="event.stopPropagation()">www.secureload.com</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section services">
+      <div class="sec-label">
+        <div class="sec-label-accent"></div>
+        <div class="sec-label-text">
+          <div class="sec-label-title">Admaren Services</div>
+          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
+        </div>
+      </div>
+      <div class="grid2">
+
+        <div class="card svc" onclick="openModal('studio')">
+          <div class="card-logo-wrap"><div class="card-name">Admaren<br><span>Studio</span></div></div>
+          <div class="card-bottom">
+            <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
+          </div>
+        </div>
+
+        <div class="card svc" onclick="openModal('plus')">
+          <div class="card-logo-wrap"><div class="card-name">Admaren<br><span>Plus</span></div></div>
+          <div class="card-bottom">
+            <div class="card-desc">Managed back-office and GCC support for global companies</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlay(event)">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-accent"></div>
+      <div class="modal-top-text">
+        <div id="mLogo"></div>
+        <div class="modal-name" id="mName"></div>
+        <div class="modal-desc" id="mDesc"></div>
+      </div>
+      <button class="modal-x" onclick="closeModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-lbl">Capabilities</div>
+      <div class="modal-tags" id="mTags"></div>
+    </div>
+    <div class="modal-footer" id="mLink"></div>
+  </div>
+</div>
+
+<script>
+const data = {
+  coems:     { name:'COEMS', logo:'coems_logo.png', desc:'Commercial management platform for breakbulk industry.', features:['Chartering Desk','Operation Desk','Engineering Desk','Management Desk'], link:'https://www.coems.com' },
+  cargo:     { name:'Cargo Centrum', logo:'Asset 1@4x-100.jpg', desc:'Maritime intelligence and cargo workflow hub.', features:['Cargo Parse AI','MPP Finder & Tracker','Sea Route Optimizer','Hindcast Wave Statistics','Cargo Mailer'], link:'https://www.cargocentrum.com' },
+  secureload:{ name:'SecureLoad', logo:'logo.svg', desc:'Cargo planning, verification and execution solutions.', features:['Stowage Planner','Loading Computer','Acceleration & Lashing','Fleet Connect','Structural Digital Twin'], link:'https://www.secureload.com' },
+  studio:    { name:'Admaren Studio', logo:null, desc:'Technical animation and visual solutions for maritime and engineering.', features:['Maritime / Engg. Animation','3D Product Animation','Character Animation','Video Post-production','Content Generation'], link:'https://www.admaren.com/portfolio/' },
+  plus:      { name:'Admaren Plus', logo:null, desc:'Managed back-office and GCC support for global companies.', features:['GCC / EOR','HR Management','Finance & Legal','SOC & IT Support','Workspace Infra'], link:null }
+};
+
+function openModal(id) {
+  const p = data[id];
+  const logoEl = document.getElementById('mLogo');
+  const extraStyle = p.logo === 'coems_logo.png' ? ' style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%);width:140px;height:40px"' : '';
+  logoEl.innerHTML = p.logo ? `<img class="modal-logo" src="${p.logo}" alt="${p.name}"${extraStyle}>` : '';
+  document.getElementById('mName').textContent = p.logo ? '' : p.name;
+  document.getElementById('mDesc').textContent = p.desc;
+  document.getElementById('mTags').innerHTML = p.features.map(f=>`<span class="modal-tag">${f}</span>`).join('');
+  document.getElementById('mLink').innerHTML = p.link ? `<a class="modal-btn" href="${p.link}" target="_blank">Visit Website ↗</a>` : '';
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+function handleOverlay(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>
