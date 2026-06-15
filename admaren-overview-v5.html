@@ -86,23 +86,24 @@ html, body {
 /* ── CARDS AREA ── */
 .cards-area {
   flex: 1; min-height: 0; display: flex; flex-direction: column;
-  padding: 1.5rem 3.5rem 2rem; gap: 2rem;
+  padding: 1.5rem 3.5rem 2rem; gap: 1rem;
 }
 
-/* ── SECTION ── */
-.section { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-
-.sec-label { display: flex; align-items: stretch; gap: 0.875rem; margin-bottom: 0.75rem; flex-shrink: 0; }
+/* ── SECTION HEADERS ROW ── */
+.sections-header {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; flex-shrink: 0;
+}
+.sec-label { display: flex; align-items: stretch; gap: 0.875rem; }
+.sec-label.span3 { grid-column: span 3; }
+.sec-label.span2 { grid-column: span 2; }
 .sec-label-accent { width: 0.2rem; border-radius: 0.2rem; background: linear-gradient(180deg, var(--navy), rgba(15,29,56,0.2)); flex-shrink: 0; }
 .sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
 .sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
 .sec-label-sub { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.125rem; text-transform: uppercase; color: var(--muted); }
-.section.ecosystem .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
+.sec-label.ecosystem .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
 
-/* ── GRIDS ── */
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; flex: 1; min-height: 0; }
-.grid2 { display: flex; justify-content: center; gap: 1rem; flex: 1; min-height: 0; }
-.grid2 .card { width: calc((100% - 2 * 1rem) / 3); flex-shrink: 0; }
+/* ── GRID ── */
+.grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; flex: 1; min-height: 0; }
 
 /* ── CARD ── */
 .card {
@@ -197,15 +198,26 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
   <!-- CARDS -->
   <div class="cards-area">
 
-    <div class="section ecosystem">
-      <div class="sec-label">
+    <!-- Section labels row -->
+    <div class="sections-header">
+      <div class="sec-label ecosystem span3">
         <div class="sec-label-accent"></div>
         <div class="sec-label-text">
           <div class="sec-label-title">Admaren Ecosystem</div>
           <div class="sec-label-sub">Software Platforms</div>
         </div>
       </div>
-      <div class="grid3">
+      <div class="sec-label span2">
+        <div class="sec-label-accent"></div>
+        <div class="sec-label-text">
+          <div class="sec-label-title">Admaren Services</div>
+          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- All 5 cards in one row -->
+    <div class="grid5">
 
         <div class="card">
           <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
@@ -245,19 +257,6 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
           </ul>
         </div>
 
-      </div>
-    </div>
-
-    <div class="section services">
-      <div class="sec-label">
-        <div class="sec-label-accent"></div>
-        <div class="sec-label-text">
-          <div class="sec-label-title">Admaren Services</div>
-          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
-        </div>
-      </div>
-      <div class="grid2">
-
         <div class="card svc studio">
           <div class="card-name">Admaren <span>Studio</span></div>
           <div class="card-rule"></div>
@@ -284,11 +283,10 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
           </ul>
         </div>
 
-      </div>
-    </div>
+    </div><!-- end .grid5 -->
 
-  </div>
-</div>
+  </div><!-- end .cards-area -->
+</div><!-- end .page -->
 <script>
   function scalePage() {
     const page = document.querySelector('.page');
