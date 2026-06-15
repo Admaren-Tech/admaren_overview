@@ -140,7 +140,8 @@ html, body {
 
 /* ── CARD ── */
 .card {
-  background: linear-gradient(160deg, #ffffff 0%, #f0f6fc 100%); border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
+  background: linear-gradient(160deg, #ffffff 0%, #edf5fc 100%); border: 1px solid rgba(1,75,118,0.18); border-radius: 1rem;
+  border-top: 2px solid rgba(1,75,118,0.35);
   padding: 1.75rem 2rem;
   display: grid; grid-template-rows: 30% 1px 20% 1px 50%;
   min-height: 0; position: relative; overflow: hidden;
@@ -155,7 +156,13 @@ html, body {
   transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
 }
 .card.svc::after { background: linear-gradient(90deg, var(--navy), rgba(15,29,56,0.3)); }
-.card.svc { padding-left: 1.25rem; padding-right: 1.25rem; border-color: rgba(15,29,56,0.12); }
+.card.svc {
+  padding-left: 1.25rem; padding-right: 1.25rem;
+  background: linear-gradient(160deg, #ffffff 0%, #eceef5 100%);
+  border-color: rgba(15,29,56,0.18);
+  border-top: 2px solid rgba(15,29,56,0.4);
+}
+.card.studio { border-left: 2px solid rgba(15,29,56,0.12); margin-left: 0.25rem; }
 .card:hover {
   box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.14), 0 1.5rem 4rem rgba(15,29,56,0.08);
   transform: translateY(-0.2rem);
