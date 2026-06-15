@@ -236,6 +236,12 @@ html, body {
   padding: 0.625rem 0 0.875rem;
 }
 .card-name span { color: var(--blue); }
+.card.studio .card-name span {
+  background: linear-gradient(90deg, #ff0080, #ff8c00, #ffe600, #00c853, #00b0ff, #9c27b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .card-rule { height: 1px; background: var(--line); margin-bottom: 0.625rem; flex-shrink: 0; }
 .card-logo-wrap { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; padding: 0 2rem; box-sizing: border-box; }
@@ -523,7 +529,7 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
       </div>
       <div class="grid2">
 
-        <div class="card svc" onclick="openModal('studio')">
+        <div class="card svc studio" onclick="openModal('studio')">
           <div class="card-logo-wrap"><div class="card-name">Admaren <span>Studio</span></div></div>
           <div class="card-bottom">
             <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
