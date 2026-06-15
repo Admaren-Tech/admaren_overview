@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Admaren</title>
+<title>Admaren v6</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; src: url('fonts/Montserrat-Regular.ttf') format('truetype'); }
@@ -36,9 +36,7 @@ html, body {
 
 .page {
   width: 1920px; height: 1200px;
-  background-color: #ffffff;
-  background-image: radial-gradient(rgba(1,75,118,0.1) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: #ffffff;
   display: grid; grid-template-rows: auto 1fr 4fr;
   flex-shrink: 0;
   transform-origin: top left; position: absolute; top: 0; left: 0;
@@ -55,16 +53,22 @@ html, body {
 }
 .top img { height: 2.75rem; }
 .top-right { display: flex; align-items: center; gap: 1.4rem; }
-.top-founded { font-size: 1rem; font-weight: 700; letter-spacing: 0.156rem; text-transform: uppercase; color: var(--muted); }
-.top-founded span { color: var(--navy); font-weight: 800; }
 
 /* ── HERO ── */
 .hero {
   padding: 0 3.5rem;
   display: flex; align-items: center; justify-content: space-between; gap: 2rem;
   background: var(--card);
-  border-bottom: 1px solid var(--line);
+  /* 2: gradient separator lines */
+  border-top: none; border-bottom: none;
+  position: relative;
 }
+.hero::before, .hero::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,29,56,0.15) 20%, rgba(15,29,56,0.15) 80%, transparent);
+}
+.hero::before { top: 0; }
+.hero::after  { bottom: 0; }
 
 .hero-label {
   font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1875rem;
@@ -75,108 +79,136 @@ html, body {
   font-size: 1.75rem; font-weight: 800; line-height: 1.1;
   letter-spacing: -0.03125rem; color: var(--navy);
 }
-.hero-title span { color: var(--blue); }
+/* 1: gradient text on "Visual Solutions" */
+.hero-title span {
+  background: linear-gradient(135deg, var(--blue) 0%, #2980b9 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
 
 .stats {
   display: flex; gap: 0; flex-shrink: 0;
-  background: #f0f4f9;
+  background: linear-gradient(135deg, #ffffff 0%, #eef4fb 100%);
   border-radius: 0.75rem; padding: 1rem 0.5rem;
   box-shadow: 0 0.1rem 0.4rem rgba(15,29,56,0.06), 0 0.3rem 1rem rgba(15,29,56,0.05);
 }
 .stat { padding: 0 1.5rem; text-align: center; border-left: 1px solid var(--line); }
 .stat:first-child { border-left: none; }
-.stat-num { font-size: 1.375rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03125rem; line-height: 1.2; margin-bottom: 0.25rem; }
-.stat-num em { color: var(--blue); font-style: normal; }
+/* 4: gradient stat numbers */
+.stat-num {
+  font-size: 1.375rem; font-weight: 800; letter-spacing: -0.03125rem; line-height: 1.2; margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-num em { font-style: normal; }
 .stat-lbl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.09375rem; text-transform: uppercase; color: var(--muted); }
 
 /* ── CARDS AREA ── */
+/* 3: subtle tint on cards section */
 .cards-area {
   min-height: 0; display: flex; flex-direction: column; justify-content: center;
-  padding: 1.5rem 3rem; gap: 0.875rem;
+  padding: 1.5rem 3.5rem; gap: 1rem;
+  background: #ffffff;
 }
 
-/* ── CARDS GRID (5 cols, 2 rows) ── */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) repeat(2, 1fr);
-  grid-template-rows: auto 22rem;
-  gap: 0.875rem;
+/* ── SECTION HEADERS ROW ── */
+.sections-header {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; flex-shrink: 0;
 }
+.sec-label { display: flex; align-items: stretch; gap: 0.875rem; }
+.sec-label.span3 { grid-column: span 3; }
+.sec-label.span2 { grid-column: span 2; }
+.sec-label-accent { width: 0.2rem; border-radius: 0.2rem; background: linear-gradient(180deg, var(--navy), rgba(15,29,56,0.2)); flex-shrink: 0; }
+.sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
+.sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
+.sec-label-sub { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.125rem; text-transform: uppercase; color: var(--muted); }
+.sec-label.ecosystem .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
 
-/* ── GROUP HEADER PANELS ── */
-.group-header {
-  border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
-  padding: 1rem 1.5rem;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem;
+/* ── GRID ── */
+.grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; height: 28rem; }
+
+/* 5: staggered entrance animation */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.group-header.eco { grid-column: span 3; }
-.group-header.svc { grid-column: span 2; }
-.group-header-title {
-  font-size: 1.25rem; font-weight: 800; letter-spacing: 0.18rem;
-  text-transform: uppercase; color: var(--navy); line-height: 1;
-}
-.group-header-sub {
-  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12rem;
-  text-transform: uppercase; color: var(--muted);
-}
+.grid5 .card { animation: cardIn 0.5s ease both; }
+.grid5 .card:nth-child(1) { animation-delay: 0.05s; }
+.grid5 .card:nth-child(2) { animation-delay: 0.15s; }
+.grid5 .card:nth-child(3) { animation-delay: 0.25s; }
+.grid5 .card:nth-child(4) { animation-delay: 0.35s; }
+.grid5 .card:nth-child(5) { animation-delay: 0.45s; }
 
 /* ── CARD ── */
 .card {
-  background: #ffffff; border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
-  padding: 1.5rem 1.25rem 1.25rem;
-  display: grid; grid-template-rows: 1fr 1fr 3fr auto;
+  background: linear-gradient(160deg, #ffffff 0%, #edf5fc 100%); border: 1px solid rgba(1,75,118,0.18); border-radius: 1rem;
+  border-top: 2px solid rgba(1,75,118,0.35);
+  padding: 1.75rem 2rem;
+  display: grid; grid-template-rows: 30% 1px 20% 1px 50%;
   min-height: 0; position: relative; overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 0.1rem 0.25rem rgba(15,29,56,0.03), 0 0.4rem 1rem rgba(15,29,56,0.06), 0 0.75rem 2rem rgba(15,29,56,0.04);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.card:hover {
-  box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.12);
-  transform: translateY(-0.15rem);
+.card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 0.2rem;
+  background: linear-gradient(90deg, var(--blue), rgba(1,75,118,0.3));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
 }
+.card.svc::after { background: linear-gradient(90deg, var(--navy), rgba(15,29,56,0.3)); }
+.card.svc {
+  padding-left: 1.25rem; padding-right: 1.25rem;
+  background: linear-gradient(160deg, #ffffff 0%, #eceef5 100%);
+  border-color: rgba(15,29,56,0.18);
+  border-top: 2px solid rgba(15,29,56,0.4);
+}
+.card.studio { border-left: 2px solid rgba(15,29,56,0.12); margin-left: 0.25rem; }
+.card:hover {
+  box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.14), 0 1.5rem 4rem rgba(15,29,56,0.08);
+  transform: translateY(-0.2rem);
+}
+.card:hover::after { transform: scaleX(1); }
 
 /* ── LOGO ── */
-.card-logo-wrap {
-  height: 4rem; display: flex; align-items: center; justify-content: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
-}
-.card-logo { display: block; height: 2.25rem; width: auto; max-width: 100%; object-fit: contain; }
+.card-logo-wrap { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.card-logo { display: block; height: 2.375rem; width: auto; max-width: 100%; object-fit: contain; }
+img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 
-/* ── CARD NAME ── */
+/* ── SERVICE NAME ── */
 .card-name {
-  height: 4rem;
-  font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12rem;
-  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.2;
-  display: flex; align-items: center; justify-content: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0;
+  font-size: 1.375rem; font-weight: 800; letter-spacing: 0.125rem;
+  text-transform: uppercase; color: var(--navy); line-height: 1.3; text-align: center;
 }
+.card-name span { color: var(--blue); }
+
+/* ── DIVIDER ── */
+.card-rule { background: linear-gradient(90deg, transparent, var(--line), transparent); align-self: stretch; }
 
 /* ── DESC ── */
 .card-desc {
-  font-size: 0.7rem; font-style: italic; font-weight: 500;
-  color: var(--muted); line-height: 1.45; text-align: center;
-  align-self: center; padding: 0 0.25rem;
+  display: flex; align-items: center; justify-content: center; min-height: 0;
+  font-size: 0.75rem; font-weight: 500; color: #2d3748; line-height: 1.45; text-align: center;
 }
 
-/* ── BULLET LIST ── */
+/* ── CHIP LIST ── */
 .card-list {
-  list-style: disc; padding-left: 1.2rem;
-  display: flex; flex-direction: column; gap: 0.3rem;
-  align-self: start; padding-top: 0.5rem; min-height: 0;
+  list-style: none; min-height: 0; padding-top: 0.5rem;
+  display: grid; align-content: start;
+  grid-template-columns: 1fr; gap: 0.5rem; align-items: stretch;
 }
 .card-list li {
-  font-size: 0.7rem; font-weight: 600; color: var(--navy); line-height: 1.4;
+  font-size: 0.75rem; font-weight: 600; color: var(--blue);
+  padding: 0.4rem 0.5rem;
+  background: rgba(1,75,118,0.05);
+  border: 1px solid rgba(1,75,118,0.12);
+  border-radius: 2rem; line-height: 1.3; text-align: center;
+  letter-spacing: 0.02rem;
 }
+.card-list li::before { display: none; }
+.card.svc .card-list li { color: var(--navy); background: rgba(15,29,56,0.04); border-color: rgba(15,29,56,0.1); }
+.card-list li:last-child:nth-child(odd) { grid-column: 1 / -1; text-align: center; }
 
-/* ── CARD LINK ── */
-.card-link {
-  display: block; text-align: center; align-self: end;
-  font-size: 0.65rem; font-weight: 600; color: var(--blue);
-  text-decoration: underline;
-}
 </style>
 </head>
 <body>
@@ -206,47 +238,58 @@ html, body {
 
   <!-- CARDS -->
   <div class="cards-area">
-    <div class="cards-grid">
 
-      <!-- Group headers -->
-      <div class="group-header eco">
-        <div class="group-header-title">Admaren Ecosystem</div>
-        <div class="group-header-sub">(Software Platforms)</div>
+    <div class="sections-header">
+      <div class="sec-label ecosystem span3">
+        <div class="sec-label-accent"></div>
+        <div class="sec-label-text">
+          <div class="sec-label-title">Admaren Ecosystem</div>
+          <div class="sec-label-sub">Software Platforms</div>
+        </div>
       </div>
-      <div class="group-header svc">
-        <div class="group-header-title">Admaren Services</div>
-        <div class="group-header-sub">(Animation, GCC &amp; Managed Support)</div>
+      <div class="sec-label span2">
+        <div class="sec-label-accent"></div>
+        <div class="sec-label-text">
+          <div class="sec-label-title">Admaren Services</div>
+          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
+        </div>
       </div>
+    </div>
 
-      <!-- Eco cards -->
+    <div class="grid5">
+
       <div class="card">
         <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
+        <div class="card-rule"></div>
         <div class="card-desc">Commercial management platform for breakbulk industry</div>
+        <div class="card-rule"></div>
         <ul class="card-list">
           <li>Chartering Desk</li>
           <li>Operation Desk</li>
           <li>Engineering Desk</li>
           <li>Management Desk</li>
         </ul>
-        <a class="card-link" href="https://www.coems.com">www.coems.com</a>
       </div>
 
       <div class="card">
-        <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:3rem"></div>
+        <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:4rem"></div>
+        <div class="card-rule"></div>
         <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
+        <div class="card-rule"></div>
         <ul class="card-list">
           <li>Cargo Parse AI</li>
           <li>MPP Finder &amp; Tracker</li>
           <li>Sea Route Optimizer</li>
-          <li>Hindcast Wave Statistics</li>
           <li>Cargo Mailer</li>
+          <li>Hindcast Wave Statistics</li>
         </ul>
-        <a class="card-link" href="https://www.cargocentrum.com">www.cargocentrum.com</a>
       </div>
 
       <div class="card">
         <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
+        <div class="card-rule"></div>
         <div class="card-desc">Cargo planning, verification and execution solutions</div>
+        <div class="card-rule"></div>
         <ul class="card-list">
           <li>Stowage Planner</li>
           <li>Loading Computer</li>
@@ -254,25 +297,27 @@ html, body {
           <li>Fleet Connect</li>
           <li>Structural Digital Twin</li>
         </ul>
-        <a class="card-link" href="https://www.secureload.com">www.secureload.com</a>
       </div>
 
-      <!-- Svc cards -->
-      <div class="card">
-        <div class="card-name">Admaren<br>Studio</div>
+      <div class="card svc studio">
+        <div class="card-name">Admaren<br><span>Studio</span></div>
+        <div class="card-rule"></div>
         <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
+        <div class="card-rule"></div>
         <ul class="card-list">
-          <li>Maritime / Engg. Animation</li>
+          <li>Content Generation</li>
           <li>3D Product Animation</li>
           <li>Character Animation</li>
           <li>Video Post-production</li>
-          <li>Content Generation</li>
+          <li>Maritime / Engg. Animation</li>
         </ul>
       </div>
 
-      <div class="card">
-        <div class="card-name">Admaren<br>Plus</div>
+      <div class="card svc plus">
+        <div class="card-name">Admaren<br><span>Plus</span></div>
+        <div class="card-rule"></div>
         <div class="card-desc">Managed back-office and GCC support for global companies</div>
+        <div class="card-rule"></div>
         <ul class="card-list">
           <li>GCC / EOR</li>
           <li>HR Management</li>
@@ -283,10 +328,11 @@ html, body {
       </div>
 
     </div>
-  </div><!-- end .cards-area -->
-
+  </div>
 
 </div><!-- end .page -->
+
+
 <script>
   function scalePage() {
     const page = document.querySelector('.page');
@@ -299,6 +345,7 @@ html, body {
   }
   scalePage();
   window.addEventListener('resize', scalePage);
+
 </script>
 </body>
 </html>
