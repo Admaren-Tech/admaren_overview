@@ -106,12 +106,14 @@ html, body {
 .group.svc { flex: 2; }
 
 /* ── SECTION LABEL ── */
-.sec-label { display: flex; align-items: stretch; gap: 0.875rem; flex-shrink: 0; }
-.sec-label-accent { width: 0.2rem; border-radius: 0.2rem; background: linear-gradient(180deg, var(--navy), rgba(15,29,56,0.2)); flex-shrink: 0; }
-.sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
-.sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
-.sec-label-sub { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.125rem; text-transform: uppercase; color: var(--muted); }
-.group.eco .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
+.sec-label {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.3rem; flex-shrink: 0; padding: 0.75rem 1rem;
+  border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
+  background: #ffffff;
+}
+.sec-label-title { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.18rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
+.sec-label-sub { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12rem; text-transform: uppercase; color: var(--muted); }
 
 /* ── GRIDS ── */
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; height: 28rem; }
@@ -220,11 +222,8 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
     <!-- Ecosystem group -->
     <div class="group eco">
       <div class="sec-label">
-        <div class="sec-label-accent"></div>
-        <div class="sec-label-text">
-          <div class="sec-label-title">Admaren Ecosystem</div>
-          <div class="sec-label-sub">Software Platforms</div>
-        </div>
+        <div class="sec-label-title">Admaren Ecosystem</div>
+        <div class="sec-label-sub">(Software Platforms)</div>
       </div>
       <div class="grid3">
         <div class="card">
@@ -271,11 +270,8 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
     <!-- Services group -->
     <div class="group svc">
       <div class="sec-label">
-        <div class="sec-label-accent"></div>
-        <div class="sec-label-text">
-          <div class="sec-label-title">Admaren Services</div>
-          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
-        </div>
+        <div class="sec-label-title">Admaren Services</div>
+        <div class="sec-label-sub">(Animation, GCC &amp; Managed Support)</div>
       </div>
       <div class="grid2">
         <div class="card svc studio">
