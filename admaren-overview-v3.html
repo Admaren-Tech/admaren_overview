@@ -24,168 +24,76 @@ a { color: inherit; text-decoration: none; }
   --hover: #eef3fa;
 }
 
-html {
-  font-size: 20px;
-}
+html { font-size: 20px; }
 
 html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  width: 100%; height: 100%; overflow: hidden;
   background: #d0d8e4;
-  font-family: 'Montserrat', sans-serif;
-  color: var(--navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: 'Montserrat', sans-serif; color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
 }
 
 .page {
-  width: 1920px;
-  height: 1200px;
+  width: 1920px; height: 1200px;
   background: var(--bg);
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  transform-origin: top left;
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex; flex-direction: column; flex-shrink: 0;
+  transform-origin: top left; position: absolute; top: 0; left: 0;
 }
 
 /* ── HEADER ── */
 .header { background: var(--card); flex-shrink: 0; }
 
 .top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 1.25rem 3.5rem;
   border-bottom: 1px solid var(--line);
 }
-
 .top img { height: 2.75rem; }
 .top-right { display: flex; align-items: center; gap: 1.4rem; }
-
-.top-founded {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.156rem;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+.top-founded { font-size: 1rem; font-weight: 700; letter-spacing: 0.156rem; text-transform: uppercase; color: var(--muted); }
 .top-founded span { color: var(--navy); font-weight: 800; }
 
 /* ── HERO ── */
 .hero {
   padding: 1.5rem 3.5rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
 }
 
 .hero-label {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.1875rem;
-  white-space: nowrap;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 0.5rem;
+  font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1875rem;
+  white-space: nowrap; line-height: 1; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.5rem;
 }
-
 .hero-title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03125rem;
-  color: var(--navy);
+  font-size: 1.75rem; font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.03125rem; color: var(--navy);
 }
 .hero-title span { color: var(--blue); }
 
 .stats {
-  display: flex;
-  gap: 0;
-  flex-shrink: 0;
-  background: var(--bg);
-  border-radius: 0.75rem;
-  padding: 1rem 0.5rem;
+  display: flex; gap: 0; flex-shrink: 0;
+  background: var(--bg); border-radius: 0.75rem; padding: 1rem 0.5rem;
 }
-
-.stat {
-  padding: 0 1.5rem;
-  border-left: 1px solid var(--line);
-  text-align: center;
-}
+.stat { padding: 0 1.5rem; text-align: center; border-left: 1px solid var(--line); }
 .stat:first-child { border-left: none; }
-
-.stat-num {
-  font-size: 1.375rem;
-  font-weight: 800;
-  color: var(--navy);
-  letter-spacing: -0.03125rem;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
-}
+.stat-num { font-size: 1.375rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03125rem; line-height: 1.2; margin-bottom: 0.25rem; }
 .stat-num em { color: var(--blue); font-style: normal; }
-
-.stat-lbl {
-  font-size: 0.5rem;
-  font-weight: 700;
-  letter-spacing: 0.09375rem;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+.stat-lbl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.09375rem; text-transform: uppercase; color: var(--muted); }
 
 /* ── CARDS AREA ── */
 .cards-area {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 3.5rem 2rem;
-  gap: 2rem;
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  padding: 1.5rem 3.5rem 2rem; gap: 2rem;
 }
 
 /* ── SECTION ── */
 .section { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 
-.sec-label {
-  display: flex;
-  align-items: stretch;
-  gap: 0.875rem;
-  margin-bottom: 0.75rem;
-  flex-shrink: 0;
-}
-
-.sec-label-accent {
-  width: 0.25rem;
-  border-radius: 0.25rem;
-  background: var(--navy);
-  flex-shrink: 0;
-}
-
+.sec-label { display: flex; align-items: stretch; gap: 0.875rem; margin-bottom: 0.75rem; flex-shrink: 0; }
+.sec-label-accent { width: 0.25rem; border-radius: 0.25rem; background: var(--navy); flex-shrink: 0; }
 .sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
-
-.sec-label-title {
-  font-size: 1.375rem;
-  font-weight: 800;
-  letter-spacing: 0.03125rem;
-  text-transform: uppercase;
-  color: var(--navy);
-  line-height: 1;
-}
-
-.sec-label-sub {
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
+.sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
+.sec-label-sub { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.125rem; text-transform: uppercase; color: var(--muted); }
 .section.ecosystem .sec-label-accent { background: var(--blue); }
 
 /* ── GRIDS ── */
@@ -195,252 +103,61 @@ html, body {
 
 /* ── CARD ── */
 .card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 0.625rem;
-  padding: 1.5rem 1.75rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 0.625rem;
+  padding: 1.5rem 1.75rem; display: flex; flex-direction: column;
+  min-height: 0; position: relative; overflow: hidden;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  min-height: 0;
   transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
-  position: relative;
-  overflow: hidden;
 }
-
 .card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 0.15rem;
-  background: var(--blue);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 0.175rem; background: var(--blue);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
 }
-
 .card.svc::after { background: var(--navy); }
 .card:hover { background: var(--hover); border-color: rgba(33,118,200,0.25); box-shadow: 0 0.3rem 1rem rgba(15,29,56,0.08); }
-.card:hover::after, .card.active::after { transform: scaleX(1); }
-.card.active { background: var(--hover); border-color: rgba(33,118,200,0.3); }
+.card:hover::after { transform: scaleX(1); }
 
+/* ── LOGO ── */
+.card-logo-wrap { display: flex; align-items: center; justify-content: center; height: 4rem; flex-shrink: 0; }
+.card-logo { display: block; height: 2.375rem; width: auto; max-width: 100%; object-fit: contain; }
+img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
+
+/* ── SERVICE NAME ── */
 .card-name {
-  font-size: 1.375rem;
-  font-weight: 800;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
-  color: var(--navy);
-  line-height: 1.15;
-  flex-shrink: 0;
-  padding: 0.625rem 0 0.875rem;
+  font-size: 1.375rem; font-weight: 800; letter-spacing: 0.125rem;
+  text-transform: uppercase; color: var(--navy); line-height: 1.15;
+  text-align: center; padding: 0.625rem 0 0.875rem; flex-shrink: 0;
 }
 .card-name span { color: var(--blue); }
 .card.studio .card-name span {
   background: linear-gradient(90deg, #ff0080, #ff8c00, #ffe600, #00c853, #00b0ff, #9c27b0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
+/* ── DIVIDER ── */
 .card-rule { height: 1px; background: var(--line); margin-bottom: 0.625rem; flex-shrink: 0; }
-.card-logo-wrap { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; padding: 0 2rem; box-sizing: border-box; }
-.card-logo { display: block; height: 2.375rem; width: auto; max-width: calc(100% - 4rem); object-fit: contain; margin: auto; }
-img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 
-.card-bottom { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding-bottom: 0.5rem; }
+/* ── DESC ── */
 .card-desc {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #2d3748;
-  line-height: 1.45;
-  padding: 0 1rem;
-  text-align: center;
+  font-size: 0.9rem; font-weight: 700; color: var(--muted); line-height: 1.3;
+  margin-bottom: 0.875rem; flex-shrink: 0; text-align: center;
 }
 
-.card-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-bottom: 0.5rem;
-  flex-shrink: 0;
+/* ── CHIP LIST ── */
+.card-list {
+  list-style: none; flex: 1; min-height: 0;
+  display: grid; align-content: center;
+  grid-template-columns: 1fr 1fr; gap: 0.6rem; align-items: stretch;
 }
-.card-chip {
-  font-size: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.025rem;
-  color: var(--blue);
-  background: rgba(33,118,200,0.08);
-  border: 1px solid rgba(33,118,200,0.18);
-  border-radius: 1rem;
-  padding: 0.15rem 0.45rem;
-  white-space: nowrap;
+.card-list li {
+  font-size: 0.8rem; font-weight: 700; color: var(--navy);
+  padding: 0.45rem 0.4rem; background: var(--bg);
+  border-radius: 0.3125rem; line-height: 1.3; text-align: center;
 }
-.card.svc .card-chip { color: var(--navy); background: rgba(15,29,56,0.06); border-color: rgba(15,29,56,0.15); }
-
-.card-tap {
-  margin-top: auto;
-  display: flex;
-  align-items: flex-end;
-  font-size: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.075rem;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.5;
-  padding-top: 0.4rem;
-}
-.card:hover .card-tap { opacity: 1; color: var(--blue); }
-.card.svc:hover .card-tap { color: var(--navy); }
-
-/* ── MODAL ── */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(15,29,56,0.45);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  padding: 1.6rem;
-  animation: fi 0.18s ease;
-}
-.overlay.open { display: flex; }
-@keyframes fi { from { opacity: 0; } to { opacity: 1; } }
-
-.modal {
-  background: #fff;
-  border-radius: 0.9rem;
-  width: 100%;
-  max-width: 24rem;
-  overflow: hidden;
-  animation: su 0.22s ease;
-  box-shadow: 0 1.6rem 4rem rgba(15,29,56,0.16);
-  position: relative;
-}
-@keyframes su { from { opacity: 0; transform: translateY(0.8rem) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-
-.modal-x {
-  position: absolute;
-  top: 1rem; right: 1rem;
-  width: 1.6rem; height: 1.6rem;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--muted);
-  font-size: 0.65rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  transition: background 0.15s, color 0.15s;
-  z-index: 2;
-}
-.modal-x:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
-
-.modal-top {
-  padding: 1.8rem 1.6rem 1.2rem;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.5rem;
-  position: relative;
-}
-.modal-top::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 1.6rem; right: 1.6rem;
-  height: 0.15rem;
-  background: var(--blue);
-  border-radius: 0 0 0.15rem 0.15rem;
-}
-.modal-top-text { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; width: 100%; }
-
-.modal-logo { display: block; width: 10rem; height: 2.8rem; object-fit: contain; }
-.modal-name {
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  color: var(--navy);
-  line-height: 1;
-}
-.modal-desc {
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 18rem;
-}
-
-.modal-body { padding: 1.2rem 1.6rem 1.4rem; }
-
-.modal-lbl {
-  font-size: 0.45rem;
-  font-weight: 700;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.7rem;
-}
-
-.modal-tags {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.4rem;
-  margin-bottom: 1.2rem;
-}
-
-.modal-tag {
-  font-size: 0.6rem;
-  font-weight: 600;
-  color: var(--navy);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 0.4rem;
-  padding: 0.45rem 0.7rem 0.45rem 1.4rem;
-  position: relative;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.2;
-}
-.modal-tag::before {
-  content: '';
-  position: absolute;
-  left: 0.6rem; top: 50%;
-  transform: translateY(-50%);
-  width: 0.3rem; height: 0.3rem;
-  border-radius: 50%;
-  background: var(--blue);
-  opacity: 0.6;
-}
-
-.modal-footer {
-  padding: 0 1.6rem 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.modal-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #fff;
-  background: var(--blue);
-  text-decoration: none;
-  padding: 0.55rem 1.1rem;
-  border-radius: 0.4rem;
-  letter-spacing: 0.015rem;
-  transition: background 0.18s, transform 0.15s;
-  font-family: 'Montserrat', sans-serif;
-  border: none;
-  cursor: pointer;
-}
-.modal-btn:hover { background: var(--navy); transform: translateY(-1px); }
+.card-list li::before { display: none; }
+.card.svc .card-list li { background: rgba(15,29,56,0.05); }
+.card-list li:last-child:nth-child(odd) { grid-column: 1 / -1; text-align: center; }
 </style>
 </head>
 <body>
@@ -462,22 +179,10 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
       <div class="hero-title">Building Software &amp; <span>Visual Solutions</span></div>
     </div>
     <div class="stats">
-      <div class="stat">
-        <div class="stat-num">800<em>+</em></div>
-        <div class="stat-lbl">Projects Delivered</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">25<em>+</em></div>
-        <div class="stat-lbl">Customers Served</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100<em>+</em></div>
-        <div class="stat-lbl">Team Members</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">500<em>+</em></div>
-        <div class="stat-lbl">Years Experience</div>
-      </div>
+      <div class="stat"><div class="stat-num">800<em>+</em></div><div class="stat-lbl">Projects Delivered</div></div>
+      <div class="stat"><div class="stat-num">25<em>+</em></div><div class="stat-lbl">Customers Served</div></div>
+      <div class="stat"><div class="stat-num">100<em>+</em></div><div class="stat-lbl">Team Members</div></div>
+      <div class="stat"><div class="stat-num">500<em>+</em></div><div class="stat-lbl">Years Experience</div></div>
     </div>
   </div>
   </div>
@@ -495,25 +200,42 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
       </div>
       <div class="grid3">
 
-        <div class="card" onclick="openModal('coems')">
+        <div class="card">
           <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
-          <div class="card-bottom">
-            <div class="card-desc">Commercial management platform for breakbulk industry</div>
-          </div>
+          <div class="card-rule"></div>
+          <div class="card-desc">Commercial management platform for breakbulk industry</div>
+          <ul class="card-list">
+            <li>Chartering Desk</li>
+            <li>Operation Desk</li>
+            <li>Engineering Desk</li>
+            <li>Management Desk</li>
+          </ul>
         </div>
 
-        <div class="card" onclick="openModal('cargo')">
-          <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:3.5rem"></div>
-          <div class="card-bottom">
-            <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
-          </div>
+        <div class="card">
+          <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:4rem"></div>
+          <div class="card-rule"></div>
+          <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
+          <ul class="card-list">
+            <li>Cargo Parse AI</li>
+            <li>MPP Finder &amp; Tracker</li>
+            <li>Sea Route Optimizer</li>
+            <li>Cargo Mailer</li>
+            <li>Hindcast Wave Statistics</li>
+          </ul>
         </div>
 
-        <div class="card" onclick="openModal('secureload')">
-          <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad" style="height:1.375rem"></div>
-          <div class="card-bottom">
-            <div class="card-desc">Cargo planning, verification and execution solutions</div>
-          </div>
+        <div class="card">
+          <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
+          <div class="card-rule"></div>
+          <div class="card-desc">Cargo planning, verification and execution solutions</div>
+          <ul class="card-list">
+            <li>Stowage Planner</li>
+            <li>Loading Computer</li>
+            <li>Acceleration &amp; Lashing</li>
+            <li>Fleet Connect</li>
+            <li>Structural Digital Twin</li>
+          </ul>
         </div>
 
       </div>
@@ -529,18 +251,30 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
       </div>
       <div class="grid2">
 
-        <div class="card svc studio" onclick="openModal('studio')">
-          <div class="card-logo-wrap"><div class="card-name">Admaren <span>Studio</span></div></div>
-          <div class="card-bottom">
-            <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
-          </div>
+        <div class="card svc studio">
+          <div class="card-name">Admaren <span>Studio</span></div>
+          <div class="card-rule"></div>
+          <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
+          <ul class="card-list">
+            <li>Content Generation</li>
+            <li>3D Product Animation</li>
+            <li>Character Animation</li>
+            <li>Video Post-production</li>
+            <li>Maritime / Engg. Animation</li>
+          </ul>
         </div>
 
-        <div class="card svc" onclick="openModal('plus')">
-          <div class="card-logo-wrap"><div class="card-name">Admaren <span>Plus</span></div></div>
-          <div class="card-bottom">
-            <div class="card-desc">Managed back-office and GCC support for global companies</div>
-          </div>
+        <div class="card svc">
+          <div class="card-name">Admaren <span>Plus</span></div>
+          <div class="card-rule"></div>
+          <div class="card-desc">Managed back-office and GCC support for global companies</div>
+          <ul class="card-list">
+            <li>GCC / EOR</li>
+            <li>HR Management</li>
+            <li>Finance &amp; Legal</li>
+            <li>SOC &amp; IT Support</li>
+            <li>Workspace Infra</li>
+          </ul>
         </div>
 
       </div>
@@ -548,62 +282,18 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 
   </div>
 </div>
-
-<!-- MODAL -->
-<div class="overlay" id="overlay" onclick="handleOverlay(event)">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-text">
-        <div id="mLogo"></div>
-        <div class="modal-name" id="mName"></div>
-        <div class="modal-desc" id="mDesc"></div>
-      </div>
-      <button class="modal-x" onclick="closeModal()">&#x2715;</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-lbl">Capabilities</div>
-      <div class="modal-tags" id="mTags"></div>
-    </div>
-    <div class="modal-footer" id="mLink"></div>
-  </div>
-</div>
-
 <script>
-const data = {
-  coems:     { name:'COEMS', logo:'coems_logo.png', desc:'Commercial management platform for breakbulk industry.', features:['Chartering Desk','Operation Desk','Engineering Desk','Management Desk'], link:null },
-  cargo:     { name:'Cargo Centrum', logo:'Asset 1@4x-100.jpg', desc:'Maritime intelligence and cargo workflow hub.', features:['Cargo Parse AI','MPP Finder & Tracker','Sea Route Optimizer','Cargo Mailer','Hindcast Wave Statistics'], link:null },
-  secureload:{ name:'SecureLoad', logo:'logo.svg', desc:'Cargo planning, verification and execution solutions.', features:['Stowage Planner','Loading Computer','Acceleration & Lashing','Fleet Connect','Structural Digital Twin'], link:null },
-  studio:    { name:'Admaren Studio', logo:null, desc:'Technical animation and visual solutions for maritime and engineering.', features:['Content Generation','3D Product Animation','Character Animation','Video Post-production','Maritime / Engg. Animation'], link:null },
-  plus:      { name:'Admaren Plus', logo:null, desc:'Managed back-office and GCC support for global companies.', features:['GCC / EOR','HR Management','Finance & Legal','SOC & IT Support','Workspace Infra'], link:null }
-};
-
-function openModal(id) {
-  const p = data[id];
-  const logoEl = document.getElementById('mLogo');
-  const extraStyle = p.logo === 'coems_logo.png' ? ' style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%);width:7rem;height:2rem"' : '';
-  logoEl.innerHTML = p.logo ? `<img class="modal-logo" src="${p.logo}" alt="${p.name}"${extraStyle}>` : '';
-  document.getElementById('mName').textContent = p.logo ? '' : p.name;
-  document.getElementById('mDesc').textContent = p.desc;
-  document.getElementById('mTags').innerHTML = p.features.map(f=>`<span class="modal-tag">${f}</span>`).join('');
-  document.getElementById('mLink').innerHTML = p.link ? `<a class="modal-btn" href="${p.link}" target="_blank">Visit Website ↗</a>` : '';
-  document.getElementById('overlay').classList.add('open');
-}
-
-function closeModal() { document.getElementById('overlay').classList.remove('open'); }
-function handleOverlay(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
-
-function scalePage() {
-  const page = document.querySelector('.page');
-  const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1200);
-  const x = (window.innerWidth  - 1920 * s) / 2;
-  const y = (window.innerHeight - 1200 * s) / 2;
-  page.style.transform = `scale(${s})`;
-  page.style.left = x + 'px';
-  page.style.top  = y + 'px';
-}
-scalePage();
-window.addEventListener('resize', scalePage);
+  function scalePage() {
+    const page = document.querySelector('.page');
+    const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1200);
+    const x = (window.innerWidth  - 1920 * s) / 2;
+    const y = (window.innerHeight - 1200 * s) / 2;
+    page.style.transform = `scale(${s})`;
+    page.style.left = x + 'px';
+    page.style.top  = y + 'px';
+  }
+  scalePage();
+  window.addEventListener('resize', scalePage);
 </script>
 </body>
 </html>
