@@ -123,8 +123,8 @@ html, body {
 /* ── CARD ── */
 .card {
   background: #ffffff; border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
-  padding: 1.25rem;
-  display: flex; flex-direction: column;
+  padding: 1.5rem 1.25rem 1.25rem;
+  display: grid; grid-template-rows: 1fr 1fr 3fr auto;
   min-height: 0; position: relative; overflow: hidden;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -135,47 +135,41 @@ html, body {
 }
 
 /* ── LOGO ── */
-.card-logo-wrap {
-  display: flex; align-items: center; justify-content: center;
-  padding: 0.4rem 0 0.6rem;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
-  flex-shrink: 0;
-}
+.card-logo-wrap { display: flex; align-items: center; justify-content: center; padding-bottom: 0.75rem; border-bottom: 2px solid; border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1; margin-bottom: 0.75rem; flex-shrink: 0; }
 .card-logo { display: block; height: 2.25rem; width: auto; max-width: 100%; object-fit: contain; }
 
 /* ── CARD NAME ── */
 .card-name {
-  font-size: 1.05rem; font-weight: 800; letter-spacing: 0.1rem;
-  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.25;
-  padding: 0.4rem 0 0.6rem;
+  font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12rem;
+  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.2;
+  padding-bottom: 0.75rem;
   border-bottom: 2px solid;
   border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
-  flex-shrink: 0;
+  margin-bottom: 0.75rem; flex-shrink: 0;
 }
 
 /* ── DESC ── */
 .card-desc {
-  font-size: 0.68rem; font-style: italic; font-weight: 500;
+  font-size: 0.7rem; font-style: italic; font-weight: 500;
   color: var(--muted); line-height: 1.45; text-align: center;
-  padding: 0.5rem 0.25rem 0.25rem; flex-shrink: 0;
+  margin-bottom: 0.75rem; flex-shrink: 0;
 }
 
 /* ── BULLET LIST ── */
 .card-list {
-  list-style: disc; padding-left: 1.1rem;
-  display: flex; flex-direction: column; gap: 0.25rem;
-  flex: 1; padding-top: 0.25rem;
+  list-style: disc; padding-left: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  align-self: start; min-height: 0;
 }
 .card-list li {
-  font-size: 0.68rem; font-weight: 600; color: var(--navy); line-height: 1.4;
+  font-size: 0.7rem; font-weight: 600; color: var(--navy); line-height: 1.4;
 }
 
 /* ── CARD LINK ── */
 .card-link {
-  display: block; text-align: center; margin-top: auto; padding-top: 0.5rem;
+  display: block; text-align: center; margin-top: 0.75rem; flex-shrink: 0;
   font-size: 0.65rem; font-weight: 600; color: var(--blue);
-  text-decoration: underline; flex-shrink: 0;
+  text-decoration: underline;
 }
 </style>
 </head>
@@ -259,7 +253,7 @@ html, body {
 
       <!-- Svc cards -->
       <div class="card">
-        <div class="card-name">Admaren<br>Studio</div>
+        <div class="card-name">Admaren Studio</div>
         <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
         <ul class="card-list">
           <li>Maritime / Engg. Animation</li>
@@ -271,7 +265,7 @@ html, body {
       </div>
 
       <div class="card">
-        <div class="card-name">Admaren<br>Plus</div>
+        <div class="card-name">Admaren Plus</div>
         <div class="card-desc">Managed back-office and GCC support for global companies</div>
         <ul class="card-list">
           <li>GCC / EOR</li>
