@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Admaren</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; src: url('fonts/Montserrat-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: italic; font-weight: 400; src: url('fonts/Montserrat-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; src: url('fonts/Montserrat-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700; src: url('fonts/Montserrat-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 800; src: url('fonts/Montserrat-ExtraBold.ttf') format('truetype'); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { color: inherit; text-decoration: none; }
+
+:root {
+  --navy: #0f1d38;
+  --blue: #014b76;
+  --bg:   #ffffff;
+  --card: #ffffff;
+  --muted: #607090;
+  --line: rgba(15,29,56,0.1);
+  --hover: #eef3fa;
+}
+
+html { font-size: 20px; }
+
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: #c8d2de;
+  font-family: 'Montserrat', sans-serif; color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.page {
+  width: 1920px; height: 1200px;
+  background-color: #ffffff;
+  background-image: radial-gradient(rgba(1,75,118,0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+  display: grid; grid-template-rows: auto 1fr 4fr;
+  flex-shrink: 0;
+  transform-origin: top left; position: absolute; top: 0; left: 0;
+}
+
+/* ── HEADER ── */
+.header { background: var(--card); display: contents; }
+
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 3.5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+.top img { height: 2.75rem; }
+.top-right { display: flex; align-items: center; gap: 1.4rem; }
+.top-founded { font-size: 1rem; font-weight: 700; letter-spacing: 0.156rem; text-transform: uppercase; color: var(--muted); }
+.top-founded span { color: var(--navy); font-weight: 800; }
+
+/* ── HERO ── */
+.hero {
+  padding: 0 3.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-label {
+  font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1875rem;
+  white-space: nowrap; line-height: 1; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 0.5rem;
+}
+.hero-title {
+  font-size: 1.75rem; font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.03125rem; color: var(--navy);
+}
+.hero-title span { color: var(--blue); }
+
+.stats {
+  display: flex; gap: 0; flex-shrink: 0;
+  background: #f0f4f9;
+  border-radius: 0.75rem; padding: 1rem 0.5rem;
+  box-shadow: 0 0.1rem 0.4rem rgba(15,29,56,0.06), 0 0.3rem 1rem rgba(15,29,56,0.05);
+}
+.stat { padding: 0 1.5rem; text-align: center; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: none; }
+.stat-num { font-size: 1.375rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03125rem; line-height: 1.2; margin-bottom: 0.25rem; }
+.stat-num em { color: var(--blue); font-style: normal; }
+.stat-lbl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.09375rem; text-transform: uppercase; color: var(--muted); }
+
+/* ── CARDS AREA ── */
+.cards-area {
+  min-height: 0; display: flex; flex-direction: column; justify-content: center;
+  padding: 1.5rem 3rem; gap: 0.875rem;
+}
+
+/* ── SECTIONS ── */
+.section { display: flex; flex-direction: column; gap: 0.625rem; }
+
+/* ── GROUP HEADER PANELS ── */
+.group-header {
+  border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem;
+  flex-shrink: 0;
+}
+.group-header-title {
+  font-size: 1.25rem; font-weight: 800; letter-spacing: 0.18rem;
+  text-transform: uppercase; color: var(--navy); line-height: 1;
+}
+.group-header-sub {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12rem;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ── CARD GRIDS ── */
+.grid-eco { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.875rem; height: 16rem; }
+.grid-svc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.875rem; height: 16rem; max-width: 66.66%; margin: 0 auto; width: 100%; }
+
+/* ── CARD ── */
+.card {
+  background: #ffffff; border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
+  padding: 1.5rem 1.25rem 1.25rem;
+  display: grid; grid-template-rows: 1fr 1fr 3fr auto;
+  min-height: 0; position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.12);
+  transform: translateY(-0.15rem);
+}
+
+/* ── LOGO ── */
+.card-logo-wrap {
+  height: 4rem; display: flex; align-items: center; justify-content: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
+}
+.card-logo { display: block; height: 2.25rem; width: auto; max-width: 100%; object-fit: contain; }
+
+/* ── CARD NAME ── */
+.card-name {
+  height: 4rem;
+  font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12rem;
+  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.2;
+  display: flex; align-items: center; justify-content: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
+}
+
+/* ── DESC ── */
+.card-desc {
+  font-size: 0.7rem; font-style: italic; font-weight: 500;
+  color: var(--muted); line-height: 1.45; text-align: center;
+  align-self: center; padding: 0 0.25rem;
+}
+
+/* ── BULLET LIST ── */
+.card-list {
+  list-style: disc; padding-left: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  align-self: start; padding-top: 0.5rem; min-height: 0;
+}
+.card-list li {
+  font-size: 0.7rem; font-weight: 600; color: var(--navy); line-height: 1.4;
+}
+
+/* ── CARD LINK ── */
+.card-link {
+  display: block; text-align: center; align-self: end;
+  font-size: 0.65rem; font-weight: 600; color: var(--blue);
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+  <div class="top">
+    <img src="admaren 4.png" alt="Admaren">
+    <div class="top-right"></div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-label">Maritime Technology Company</div>
+      <div class="hero-title">Building Software &amp; <span>Visual Solutions</span></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">2018</div><div class="stat-lbl">Founded</div></div>
+      <div class="stat"><div class="stat-num">800<em>+</em></div><div class="stat-lbl">Projects Delivered</div></div>
+      <div class="stat"><div class="stat-num">25<em>+</em></div><div class="stat-lbl">Customers Served</div></div>
+      <div class="stat"><div class="stat-num">100<em>+</em></div><div class="stat-lbl">Team Members</div></div>
+    </div>
+  </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-area">
+
+    <!-- Ecosystem row -->
+    <div class="section">
+      <div class="group-header">
+        <div class="group-header-title">Admaren Ecosystem</div>
+        <div class="group-header-sub">(Software Platforms)</div>
+      </div>
+      <div class="grid-eco">
+        <div class="card">
+          <div class="card-name">COEMS</div>
+          <div class="card-desc">Commercial management platform for breakbulk industry</div>
+          <ul class="card-list">
+            <li>Chartering Desk</li>
+            <li>Operation Desk</li>
+            <li>Engineering Desk</li>
+            <li>Management Desk</li>
+          </ul>
+          <a class="card-link" href="https://www.coems.com">www.coems.com</a>
+        </div>
+        <div class="card">
+          <div class="card-name">Cargo Centrum</div>
+          <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
+          <ul class="card-list">
+            <li>Cargo Parse AI</li>
+            <li>MPP Finder &amp; Tracker</li>
+            <li>Sea Route Optimizer</li>
+            <li>Hindcast Wave Statistics</li>
+            <li>Cargo Mailer</li>
+          </ul>
+          <a class="card-link" href="https://www.cargocentrum.com">www.cargocentrum.com</a>
+        </div>
+        <div class="card">
+          <div class="card-name">SecureLoad</div>
+          <div class="card-desc">Cargo planning, verification and execution solutions</div>
+          <ul class="card-list">
+            <li>Stowage Planner</li>
+            <li>Loading Computer</li>
+            <li>Acceleration &amp; Lashing</li>
+            <li>Fleet Connect</li>
+            <li>Structural Digital Twin</li>
+          </ul>
+          <a class="card-link" href="https://www.secureload.com">www.secureload.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services row -->
+    <div class="section">
+      <div class="group-header">
+        <div class="group-header-title">Admaren Services</div>
+        <div class="group-header-sub">(Animation, GCC &amp; Managed Support)</div>
+      </div>
+      <div class="grid-svc">
+        <div class="card">
+          <div class="card-name">Admaren<br>Studio</div>
+          <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
+          <ul class="card-list">
+            <li>Maritime / Engg. Animation</li>
+            <li>3D Product Animation</li>
+            <li>Character Animation</li>
+            <li>Video Post-production</li>
+            <li>Content Generation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-name">Admaren<br>Plus</div>
+          <div class="card-desc">Managed back-office and GCC support for global companies</div>
+          <ul class="card-list">
+            <li>GCC / EOR</li>
+            <li>HR Management</li>
+            <li>Finance &amp; Legal</li>
+            <li>SOC &amp; IT Support</li>
+            <li>Workspace Infra</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .cards-area -->
+
+
+</div><!-- end .page -->
+<script>
+  function scalePage() {
+    const page = document.querySelector('.page');
+    const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1200);
+    const x = (window.innerWidth  - 1920 * s) / 2;
+    const y = (window.innerHeight - 1200 * s) / 2;
+    page.style.transform = `scale(${s})`;
+    page.style.left = x + 'px';
+    page.style.top  = y + 'px';
+  }
+  scalePage();
+  window.addEventListener('resize', scalePage);
+</script>
+</body>
+</html>
