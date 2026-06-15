@@ -296,7 +296,7 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 /* ── MODAL ── */
 .overlay {
   display: none;
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(15,29,56,0.45);
   z-index: 100;
@@ -547,10 +547,9 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
     </div>
 
   </div>
-</div>
 
-<!-- MODAL -->
-<div class="overlay" id="overlay" onclick="handleOverlay(event)">
+  <!-- MODAL -->
+  <div class="overlay" id="overlay" onclick="handleOverlay(event)">
   <div class="modal">
     <div class="modal-top">
       <div class="modal-top-text">
@@ -566,8 +565,9 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
     </div>
     <div class="modal-footer" id="mLink"></div>
   </div>
-</div>
+  </div>
 
+</div><!-- end .page -->
 <script>
 const data = {
   coems:     { name:'COEMS', logo:'coems_logo.png', desc:'Commercial management platform for breakbulk industry.', features:['Chartering Desk','Operation Desk','Engineering Desk','Management Desk'], link:null },
