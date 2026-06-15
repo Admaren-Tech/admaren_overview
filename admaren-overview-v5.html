@@ -91,102 +91,82 @@ html, body {
 
 /* ── CARDS AREA ── */
 .cards-area {
-  min-height: 0; display: flex; align-items: center; justify-content: center;
-  padding: 1.5rem; gap: 1.25rem;
+  min-height: 0; display: flex; flex-direction: column; justify-content: center;
+  padding: 1.5rem; gap: 0.875rem;
 }
 
-/* ── GROUP CONTAINERS ── */
-.group {
-  display: flex; flex-direction: column; gap: 0.75rem;
-  border: 1px solid rgba(15,29,56,0.12); border-radius: 1.25rem;
-  padding: 1.25rem 1.25rem 1.25rem;
-  min-width: 0;
+/* ── CARDS GRID (5 cols, 2 rows) ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) repeat(2, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 0.875rem;
 }
-.group.eco { flex: 3; }
-.group.svc { flex: 2; }
 
-/* ── SECTION LABEL ── */
-.sec-label { display: flex; align-items: stretch; gap: 0.875rem; flex-shrink: 0; }
-.sec-label-accent { width: 0.2rem; border-radius: 0.2rem; background: linear-gradient(180deg, var(--navy), rgba(15,29,56,0.2)); flex-shrink: 0; }
-.sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
-.sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
-.sec-label-sub { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.125rem; text-transform: uppercase; color: var(--muted); }
-.group.eco .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
-
-/* ── GRIDS ── */
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; height: 28rem; }
-.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; height: 28rem; }
+/* ── GROUP HEADER PANELS ── */
+.group-header {
+  border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
+  padding: 1rem 1.5rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem;
+}
+.group-header.eco { grid-column: span 3; }
+.group-header.svc { grid-column: span 2; }
+.group-header-title {
+  font-size: 1.25rem; font-weight: 800; letter-spacing: 0.18rem;
+  text-transform: uppercase; color: var(--navy); line-height: 1;
+}
+.group-header-sub {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12rem;
+  text-transform: uppercase; color: var(--muted);
+}
 
 /* ── CARD ── */
 .card {
-  background: #ffffff; border: 1px solid rgba(1,75,118,0.15); border-radius: 1rem;
-  border-top: 2px solid rgba(1,75,118,0.35);
-  padding: 1.75rem 2rem;
-  display: grid; grid-template-rows: 30% 1px 20% 1px 50%;
+  background: #ffffff; border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
+  padding: 1.5rem 1.25rem 1.25rem;
+  display: flex; flex-direction: column;
   min-height: 0; position: relative; overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 0.1rem 0.25rem rgba(15,29,56,0.03), 0 0.4rem 1rem rgba(15,29,56,0.06), 0 0.75rem 2rem rgba(15,29,56,0.04);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 0.2rem;
-  background: linear-gradient(90deg, var(--blue), rgba(1,75,118,0.3));
-  transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
-}
-.card.svc::after { background: linear-gradient(90deg, var(--navy), rgba(15,29,56,0.3)); }
-.card.svc {
-  padding-left: 1.25rem; padding-right: 1.25rem;
-  background: #ffffff;
-  border-color: rgba(15,29,56,0.15);
-  border-top: 2px solid rgba(15,29,56,0.4);
-}
-
 .card:hover {
-  box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.14), 0 1.5rem 4rem rgba(15,29,56,0.08);
-  transform: translateY(-0.2rem);
+  box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.12);
+  transform: translateY(-0.15rem);
 }
-.card:hover::after { transform: scaleX(1); }
 
-/* ── LOGO ── */
-.card-logo-wrap { display: flex; align-items: center; justify-content: center; min-height: 0; }
-.card-logo { display: block; height: 2.375rem; width: auto; max-width: 100%; object-fit: contain; }
-img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
-
-/* ── SERVICE NAME ── */
+/* ── CARD NAME ── */
 .card-name {
-  display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0;
-  font-size: 1.375rem; font-weight: 800; letter-spacing: 0.125rem;
-  text-transform: uppercase; color: var(--navy); line-height: 1.3; text-align: center;
+  font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12rem;
+  text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.2;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
+  margin-bottom: 0.75rem; flex-shrink: 0;
 }
-.card-name span { color: var(--blue); }
-
-/* ── DIVIDER ── */
-.card-rule { background: linear-gradient(90deg, transparent, var(--line), transparent); align-self: stretch; }
 
 /* ── DESC ── */
 .card-desc {
-  display: flex; align-items: center; justify-content: center; min-height: 0;
-  font-size: 0.75rem; font-weight: 500; color: #2d3748; line-height: 1.45; text-align: center;
+  font-size: 0.7rem; font-style: italic; font-weight: 500;
+  color: var(--muted); line-height: 1.45; text-align: center;
+  margin-bottom: 0.75rem; flex-shrink: 0;
 }
 
-/* ── CHIP LIST ── */
+/* ── BULLET LIST ── */
 .card-list {
-  list-style: none; min-height: 0; padding-top: 0.5rem;
-  display: grid; align-content: start;
-  grid-template-columns: 1fr; gap: 0.5rem; align-items: stretch;
+  list-style: disc; padding-left: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  flex: 1;
 }
 .card-list li {
-  font-size: 0.75rem; font-weight: 600; color: var(--blue);
-  padding: 0.4rem 0.5rem;
-  background: rgba(1,75,118,0.05);
-  border: 1px solid rgba(1,75,118,0.12);
-  border-radius: 2rem; line-height: 1.3; text-align: center;
-  letter-spacing: 0.02rem;
+  font-size: 0.7rem; font-weight: 600; color: var(--navy); line-height: 1.4;
 }
-.card-list li::before { display: none; }
-.card.svc .card-list li { color: var(--navy); background: rgba(15,29,56,0.04); border-color: rgba(15,29,56,0.1); }
-.card-list li:last-child:nth-child(odd) { grid-column: 1 / -1; text-align: center; }
+
+/* ── CARD LINK ── */
+.card-link {
+  display: block; text-align: center; margin-top: 0.75rem; flex-shrink: 0;
+  font-size: 0.65rem; font-weight: 600; color: var(--blue);
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -216,97 +196,83 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
 
   <!-- CARDS -->
   <div class="cards-area">
+    <div class="cards-grid">
 
-    <!-- Ecosystem group -->
-    <div class="group eco">
-      <div class="sec-label">
-        <div class="sec-label-accent"></div>
-        <div class="sec-label-text">
-          <div class="sec-label-title">Admaren Ecosystem</div>
-          <div class="sec-label-sub">Software Platforms</div>
-        </div>
+      <!-- Group headers -->
+      <div class="group-header eco">
+        <div class="group-header-title">Admaren Ecosystem</div>
+        <div class="group-header-sub">(Software Platforms)</div>
       </div>
-      <div class="grid3">
-        <div class="card">
-          <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Commercial management platform for breakbulk industry</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Chartering Desk</li>
-            <li>Operation Desk</li>
-            <li>Engineering Desk</li>
-            <li>Management Desk</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:4rem"></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Cargo Parse AI</li>
-            <li>MPP Finder &amp; Tracker</li>
-            <li>Sea Route Optimizer</li>
-            <li>Cargo Mailer</li>
-            <li>Hindcast Wave Statistics</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Cargo planning, verification and execution solutions</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Stowage Planner</li>
-            <li>Loading Computer</li>
-            <li>Acceleration &amp; Lashing</li>
-            <li>Fleet Connect</li>
-            <li>Structural Digital Twin</li>
-          </ul>
-        </div>
+      <div class="group-header svc">
+        <div class="group-header-title">Admaren Services</div>
+        <div class="group-header-sub">(Animation, GCC &amp; Managed Support)</div>
       </div>
+
+      <!-- Eco cards -->
+      <div class="card">
+        <div class="card-name">COEMS</div>
+        <div class="card-desc">Commercial management platform for breakbulk industry</div>
+        <ul class="card-list">
+          <li>Chartering Desk</li>
+          <li>Operation Desk</li>
+          <li>Engineering Desk</li>
+          <li>Management Desk</li>
+        </ul>
+        <a class="card-link" href="https://www.coems.com">www.coems.com</a>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Cargo Centrum</div>
+        <div class="card-desc">Maritime intelligence and cargo workflow hub</div>
+        <ul class="card-list">
+          <li>Cargo Parse AI</li>
+          <li>MPP Finder &amp; Tracker</li>
+          <li>Sea Route Optimizer</li>
+          <li>Hindcast Wave Statistics</li>
+          <li>Cargo Mailer</li>
+        </ul>
+        <a class="card-link" href="https://www.cargocentrum.com">www.cargocentrum.com</a>
+      </div>
+
+      <div class="card">
+        <div class="card-name">SecureLoad</div>
+        <div class="card-desc">Cargo planning, verification and execution solutions</div>
+        <ul class="card-list">
+          <li>Stowage Planner</li>
+          <li>Loading Computer</li>
+          <li>Acceleration &amp; Lashing</li>
+          <li>Fleet Connect</li>
+          <li>Structural Digital Twin</li>
+        </ul>
+        <a class="card-link" href="https://www.secureload.com">www.secureload.com</a>
+      </div>
+
+      <!-- Svc cards -->
+      <div class="card">
+        <div class="card-name">Admaren Studio</div>
+        <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
+        <ul class="card-list">
+          <li>Maritime / Engg. Animation</li>
+          <li>3D Product Animation</li>
+          <li>Character Animation</li>
+          <li>Video Post-production</li>
+          <li>Content Generation</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Admaren Plus</div>
+        <div class="card-desc">Managed back-office and GCC support for global companies</div>
+        <ul class="card-list">
+          <li>GCC / EOR</li>
+          <li>HR Management</li>
+          <li>Finance &amp; Legal</li>
+          <li>SOC &amp; IT Support</li>
+          <li>Workspace Infra</li>
+        </ul>
+      </div>
+
     </div>
-
-    <!-- Services group -->
-    <div class="group svc">
-      <div class="sec-label">
-        <div class="sec-label-accent"></div>
-        <div class="sec-label-text">
-          <div class="sec-label-title">Admaren Services</div>
-          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
-        </div>
-      </div>
-      <div class="grid2">
-        <div class="card svc studio">
-          <div class="card-name">Admaren<br><span>Studio</span></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Technical animation and visual solutions for maritime &amp; engineering</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>Content Generation</li>
-            <li>3D Product Animation</li>
-            <li>Character Animation</li>
-            <li>Video Post-production</li>
-            <li>Maritime / Engg. Animation</li>
-          </ul>
-        </div>
-        <div class="card svc plus">
-          <div class="card-name">Admaren<br><span>Plus</span></div>
-          <div class="card-rule"></div>
-          <div class="card-desc">Managed back-office and GCC support for global companies</div>
-          <div class="card-rule"></div>
-          <ul class="card-list">
-            <li>GCC / EOR</li>
-            <li>HR Management</li>
-            <li>Finance &amp; Legal</li>
-            <li>SOC &amp; IT Support</li>
-            <li>Workspace Infra</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
   </div><!-- end .cards-area -->
 
 
