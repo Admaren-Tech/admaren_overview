@@ -90,34 +90,31 @@ html, body {
 
 /* ── CARDS AREA ── */
 .cards-area {
-  min-height: 0; display: flex; flex-direction: column; justify-content: center;
-  padding: 1.5rem 3.5rem; gap: 1rem;
+  min-height: 0; display: flex; align-items: stretch; justify-content: center;
+  padding: 1.5rem 3.5rem; gap: 1.25rem;
 }
 
-/* ── SECTION HEADERS ROW ── */
-.sections-header {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; flex-shrink: 0;
+/* ── GROUP CONTAINERS ── */
+.group {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  border: 1px solid rgba(15,29,56,0.12); border-radius: 1.25rem;
+  padding: 1.25rem 1.25rem 1.25rem;
+  min-width: 0;
 }
-.sec-label { display: flex; align-items: stretch; gap: 0.875rem; }
-.sec-label.span3 { grid-column: span 3; }
-.sec-label.span2 { grid-column: span 2; }
-.sec-label.span-sep { grid-column: span 1; }
+.group.eco { flex: 3; }
+.group.svc { flex: 2; }
+
+/* ── SECTION LABEL ── */
+.sec-label { display: flex; align-items: stretch; gap: 0.875rem; flex-shrink: 0; }
 .sec-label-accent { width: 0.2rem; border-radius: 0.2rem; background: linear-gradient(180deg, var(--navy), rgba(15,29,56,0.2)); flex-shrink: 0; }
 .sec-label-text { display: flex; flex-direction: column; justify-content: center; gap: 0.1875rem; }
 .sec-label-title { font-size: 1.375rem; font-weight: 800; letter-spacing: 0.03125rem; text-transform: uppercase; color: var(--navy); line-height: 1; }
 .sec-label-sub { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.125rem; text-transform: uppercase; color: var(--muted); }
-.sec-label.ecosystem .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
+.group.eco .sec-label-accent { background: linear-gradient(180deg, var(--blue), rgba(1,75,118,0.2)); }
 
-/* ── GRID ── */
-.grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; height: 28rem; position: relative; }
-/* vertical separator between eco (cols 1-3) and svc (cols 4-5) */
-/* midpoint of gap 3→4: left = 3*(100% - 4gap)/5 + 3.5gap = 60% + 1.1rem */
-.grid5::before {
-  content: ''; position: absolute; top: 8%; bottom: 8%;
-  left: calc(60% + 1.1rem); width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(15,29,56,0.22) 25%, rgba(15,29,56,0.22) 75%, transparent);
-  pointer-events: none;
-}
+/* ── GRIDS ── */
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; flex: 1; min-height: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; flex: 1; min-height: 0; }
 
 /* ── CARD ── */
 .card {
@@ -143,13 +140,7 @@ html, body {
   border-color: rgba(15,29,56,0.15);
   border-top: 2px solid rgba(15,29,56,0.4);
 }
-/* separator drawn on the grid container between col 3 and 4 */
-.grid5 { isolation: isolate; }
-.grid5::before {
-  content: ''; position: absolute; top: 10%; bottom: 10%;
-  width: 1px; background: linear-gradient(180deg, transparent, rgba(15,29,56,0.2) 30%, rgba(15,29,56,0.2) 70%, transparent);
-  left: calc(60% + 0.5rem); /* midpoint of gap between col3 and col4 in a 5-col equal grid */
-}
+
 .card:hover {
   box-shadow: 0 0.2rem 0.5rem rgba(15,29,56,0.06), 0 0.75rem 2.5rem rgba(15,29,56,0.14), 0 1.5rem 4rem rgba(15,29,56,0.08);
   transform: translateY(-0.2rem);
@@ -225,27 +216,16 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
   <!-- CARDS -->
   <div class="cards-area">
 
-    <!-- Section labels row -->
-    <div class="sections-header">
-      <div class="sec-label ecosystem span3">
+    <!-- Ecosystem group -->
+    <div class="group eco">
+      <div class="sec-label">
         <div class="sec-label-accent"></div>
         <div class="sec-label-text">
           <div class="sec-label-title">Admaren Ecosystem</div>
           <div class="sec-label-sub">Software Platforms</div>
         </div>
       </div>
-      <div class="sec-label span2">
-        <div class="sec-label-accent"></div>
-        <div class="sec-label-text">
-          <div class="sec-label-title">Admaren Services</div>
-          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- All 5 cards in one row -->
-    <div class="grid5">
-
+      <div class="grid3">
         <div class="card">
           <div class="card-logo-wrap"><img class="card-logo" src="coems_logo.png" alt="COEMS" style="filter:brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(900%) hue-rotate(178deg) brightness(88%)"></div>
           <div class="card-rule"></div>
@@ -258,7 +238,6 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
             <li>Management Desk</li>
           </ul>
         </div>
-
         <div class="card">
           <div class="card-logo-wrap"><img class="card-logo" src="Asset 1@4x-100.jpg" alt="Cargo Centrum" style="height:4rem"></div>
           <div class="card-rule"></div>
@@ -272,7 +251,6 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
             <li>Hindcast Wave Statistics</li>
           </ul>
         </div>
-
         <div class="card">
           <div class="card-logo-wrap"><img class="card-logo" src="logo.svg" alt="SecureLoad"></div>
           <div class="card-rule"></div>
@@ -286,7 +264,19 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
             <li>Structural Digital Twin</li>
           </ul>
         </div>
+      </div>
+    </div>
 
+    <!-- Services group -->
+    <div class="group svc">
+      <div class="sec-label">
+        <div class="sec-label-accent"></div>
+        <div class="sec-label-text">
+          <div class="sec-label-title">Admaren Services</div>
+          <div class="sec-label-sub">Animation, GCC &amp; Managed Support</div>
+        </div>
+      </div>
+      <div class="grid2">
         <div class="card svc studio">
           <div class="card-name">Admaren<br><span>Studio</span></div>
           <div class="card-rule"></div>
@@ -300,7 +290,6 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
             <li>Maritime / Engg. Animation</li>
           </ul>
         </div>
-
         <div class="card svc plus">
           <div class="card-name">Admaren<br><span>Plus</span></div>
           <div class="card-rule"></div>
@@ -314,8 +303,8 @@ img.card-logo[alt="SecureLoad"] { height: 1.375rem; }
             <li>Workspace Infra</li>
           </ul>
         </div>
-
-    </div><!-- end .grid5 -->
+      </div>
+    </div>
 
   </div><!-- end .cards-area -->
 
