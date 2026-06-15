@@ -124,7 +124,7 @@ html, body {
 .card {
   background: #ffffff; border: 1px solid rgba(15,29,56,0.12); border-radius: 0.875rem;
   padding: 1.5rem 1.25rem 1.25rem;
-  display: grid; grid-template-rows: 2fr 2fr 5fr 1fr;
+  display: grid; grid-template-rows: 4.5rem auto 1fr auto;
   min-height: 0; position: relative; overflow: hidden;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -137,8 +137,7 @@ html, body {
 /* ── LOGO ── */
 .card-logo-wrap {
   display: flex; align-items: center; justify-content: center;
-  align-self: center;
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
   border-bottom: 2px solid;
   border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
 }
@@ -149,8 +148,7 @@ html, body {
   font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12rem;
   text-transform: uppercase; color: var(--navy); text-align: center; line-height: 1.2;
   display: flex; align-items: center; justify-content: center;
-  align-self: end;
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
   border-bottom: 2px solid;
   border-image: linear-gradient(90deg, transparent, var(--blue) 30%, var(--navy) 70%, transparent) 1;
 }
